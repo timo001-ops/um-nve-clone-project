@@ -1,0 +1,39 @@
+body {
+    height: 100vh;
+    width: 100vh;
+}
+
+#um25-container {
+    background: radial-gradient(ellipse farthest-corner at bottom left, rgb(233, 147, 81) 10%, transparent 65%), radial-gradient(circle farthest-side at top left, rgb(182, 56, 92) 30%, transparent 70%), radial-gradient(ellipse farthest-corner at top right, rgb(16, 57, 82) 10%, transparent 60%), rgb(52, 139, 197);
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.um25-logo-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 6rem;
+}
+
+.logo-um25-image-properties {
+    height: 6rem;
+    width: auto;
+}
+
+.both-um25-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-um25-image-properties {
+    height: 10rem;
+    width: auto;
+}
+
+.um25-india-section {
+    display: flex;
+    flex-direction: row;
+}
