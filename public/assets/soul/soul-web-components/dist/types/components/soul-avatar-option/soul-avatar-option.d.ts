@@ -1,0 +1,34 @@
+import { ComponentInterface, EventEmitter } from '../../stencil-public-runtime';
+export declare class SoulAvatarOption implements ComponentInterface {
+  disabled: boolean;
+  hidden: boolean;
+  highlighted: boolean;
+  passive: boolean;
+  selected: boolean;
+  dataSelected: boolean;
+  nonFilterable: boolean;
+  readonly instanceId: string;
+  value: any;
+  soulOptionChange: EventEmitter<SoulAvatarOption>;
+  soulOptionClick: EventEmitter<SoulAvatarOption>;
+  soulOptionHover: EventEmitter<SoulAvatarOption>;
+  soulOptionSelectChange: EventEmitter<SoulAvatarOption>;
+  private avatarSlot;
+  private infoSlot;
+  private optionHelper;
+  private hostElement;
+  private observer;
+  constructor();
+  componentDidLoad(): void;
+  componentDidRender(): void;
+  disconnectedCallback(): void;
+  clone(): Promise<HTMLSoulAvatarOptionElement>;
+  match(term: string): Promise<boolean>;
+  onDisabledChange(): void;
+  onSelectedChange(): void;
+  render(): any;
+  private onChange;
+  private onMouseMove;
+  private onMouseDown;
+  private isOptionDisabled;
+}

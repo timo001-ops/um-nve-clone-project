@@ -1,0 +1,39 @@
+{
+  "name": "um-nve-clone-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@esteco/soul-core": "^45.1.2",
+    "@esteco/soul-web-components": "^45.1.2",
+    "autoprefixer": "^10.4.20",
+    "contentful": "^11.4.5",
+    "fs": "^0.0.1-security",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sass": "^1.84.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@stackbit/cms-contentful": "^1.0.31",
+    "@stackbit/types": "^2.1.13",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,2 @@
+import{i as t}from"./p-2327b221.js";class s{isValidStatus(t,s){return t.includes(s)}validateStatus(s,a){if(t(a)&&!this.isValidStatus(s,a)){console.debug(`Status ${a} not supported. Supported statuses: ${s.join(", ")}`)}}}export{s as S};
+//# sourceMappingURL=p-76a06a4b.js.map

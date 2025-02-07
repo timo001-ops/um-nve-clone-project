@@ -1,0 +1,34 @@
+/*------------------------------------*\
+  $SOUL-CORE
+\*------------------------------------*/
+@use '@esteco/soul-core/modules/core' with (
+  $soul-assets-folder: './assets/soul'
+);
+
+/*------------------------------------*\
+  $SOUL-BASE-STYLES
+\*------------------------------------*/
+@use '@esteco/soul-core/modules/base-styles' with (
+    $scrollable-body: true
+);
+
+/*------------------------------------*\
+  $SOUL-THEMES
+\*------------------------------------*/
+@use '@esteco/soul-core/modules/themes';
+
+/*------------------------------------*\
+  $SOUL-COMPONENTS
+\*------------------------------------*/
+@use '@esteco/soul-core/modules/components';
+
+/*------------------------------------*\
+  $PUT-HERE-YOUR-STYLES
+\*------------------------------------*/
+
+
+/*------------------------------------*\
+  $SOUL-ESSENTIALS
+  Make sure this import is always the last
+\*------------------------------------*/
+@use '@esteco/soul-core/modules/essentials';

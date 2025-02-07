@@ -1,0 +1,2 @@
+import{i as e}from"./p-2327b221.js";class r{getRange(e,r){if(e>=r||Number.isNaN(e)||Number.isNaN(r)){console.debug("Invalid min and max. The max and min defaults will be used.");return{min:0,max:100}}return{min:e,max:r}}getLabel(e,r,a){return e?e:!r?`${a}%`:""}getProgressPercentage(r,a){a=!e(a)||Number.isNaN(a)?0:a;const t=Math.floor(100*(a-r.min)/(r.max-r.min));return Math.min(Math.max(0,t),100)}getAccessibilityLabel(e,r){return e?e:r}}export{r as P};
+//# sourceMappingURL=p-a4a094c1.js.map

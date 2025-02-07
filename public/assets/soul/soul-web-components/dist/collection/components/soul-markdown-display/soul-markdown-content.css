@@ -1,0 +1,509 @@
+/*----------------*\
+    $CONSTANTS
+\*----------------*/
+/**
+ * ASSET FOLDER
+ */
+:root {
+  --soul-assets-folder: ./assets/;
+}
+
+/*------------------------------------*\
+    $VARIANT_LABELS
+\*------------------------------------*/
+/*------------------------------------*\
+    $DIRECTIONS
+\*------------------------------------*/
+/**
+ * Z-INDEX
+ */
+/**
+ * RADIUS
+ */
+/**
+ * COLUMN WIDTHS
+ */
+/**
+ * OPACITY
+ */
+/**
+ * SHADOWS
+ */
+/*------------------------------------*\
+    $BREAKPOINTS
+\*------------------------------------*/
+/*------------------------------------*\
+    $ANIMATIONS
+\*------------------------------------*/
+/*------------------------------------*\
+    $SEVERITIES
+\*------------------------------------*/
+/*------------------------------------*\
+    $TYPEFACES
+\*------------------------------------*/
+@font-face {
+  font-family: "soul-sans";
+  src: url("./assets//soul-roman.woff2") format("woff2");
+  font-weight: 100 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "soul-mono";
+  src: url("./assets//soul-mono.woff2") format("woff2");
+  font-display: swap;
+}
+/*------------------------------------*\
+    $BACKGROUND-IMAGE
+\*------------------------------------*/
+/*------------------------------------*\
+    $FLEXBOX_MIXINS
+\*------------------------------------*/
+/**
+ * Create display:flex property with all vendor prefixes on value
+ */
+/*------------------------------------*\
+    $POSITION
+\*------------------------------------*/
+/*------------------------------------*\
+    $FULL-SCREEN
+\*------------------------------------*/
+/*------------------------------------*\
+    $INLINE-BLOCK-SPACING-FIX
+\*------------------------------------*/
+/*------------------------------------*\
+    $PLACEHOLDER
+\*------------------------------------*/
+/*------------------------------------*\
+    $POSITION
+\*------------------------------------*/
+/*------------------------------------*\
+    $PULL-MARGIN
+\*------------------------------------*/
+/*------------------------------------*\
+    $SCROLL
+\*------------------------------------*/
+/*------------------------------------*\
+    $GRID
+\*------------------------------------*/
+/*------------------------------------*\
+    $SHAPES
+\*------------------------------------*/
+/*------------------------------------*\
+    $TRANSITION
+\*------------------------------------*/
+/*------------------------------------*\
+    $USER-SELECT
+\*------------------------------------*/
+/*------------------------------------*\
+    $FONT_COLLECTIONS
+\*------------------------------------*/
+/*------------------------------------*\
+    $FONT_MIXINS
+\*------------------------------------*/
+/*------------------------------------*\
+    $FONT_FUNCTIONS
+\*------------------------------------*/
+/*------------------------------------*\
+    $ICONS
+\*------------------------------------*/
+/*------------------------------------*\
+    Deprecated
+\*------------------------------------*/
+@font-face {
+  font-family: "soul";
+  src: url("./assets//soul-icons.woff2") format("woff2");
+  font-display: block;
+}
+/*------------------------------------*\
+    $INPUT-STATES
+\*------------------------------------*/
+/*------------------------------------*\
+    $BUTTON-ELEMENT
+\*------------------------------------*/
+/*------------------------------------*\
+    $FOCUS-OUTLINE
+\*------------------------------------*/
+/*------------------------------------*\
+    $LINK
+\*------------------------------------*/
+/*------------------------------------*\
+    $SCROLL-FADE
+\*------------------------------------*/
+/*------------------------------------*\
+    $TEXT_MIXINS
+\*------------------------------------*/
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+/**
+ * A more considered reset; more of a restart...
+ * As per: csswizardry.com/2011/10/reset-restarted
+ */
+/**
+ * Let's make the box model all nice, shall we...?
+ */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/**
+ * The usual...
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+dl, dd, ol, ul,
+form, fieldset, legend,
+table, th, td, caption,
+hr, dialog {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Reset anchor default style
+ */
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/**
+ * Reset dialog default style
+ */
+dialog {
+  color: inherit;
+}
+
+/**
+ * Reset fieldset border style
+ */
+fieldset {
+  border: none;
+  position: relative;
+}
+
+/**
+ * Remove underlines from potentially troublesome elements.
+ */
+abbr, u, ins {
+  text-decoration: none;
+}
+
+/**
+ * Apply faux underline via `border-bottom`.
+ */
+ins {
+  border-bottom: 1px solid;
+}
+
+/**
+ * So that `alt` text is visually offset if images don't load.
+ */
+img {
+  font-style: italic;
+}
+
+/**
+ * Give form elements some cursor interactions...
+ */
+label,
+button,
+select,
+option {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button {
+  color: var(--soul-theme-color-text-on-light);
+}
+
+textarea:active,
+textarea:focus {
+  cursor: text;
+  outline: none;
+}
+
+main {
+  display: block;
+}
+
+/*------------------------------------*\
+    $TYPOGRAPHY SCALES
+\*------------------------------------*/
+:root,
+.soul-font-scale-xs {
+  --soul-font-size-2-xs: 0.5625rem;
+  --soul-font-size-xs: 0.6875rem;
+  --soul-font-size-s: 0.8125rem;
+  --soul-font-size-m: 1rem;
+  --soul-font-size-l: 1.125rem;
+  --soul-font-size-xl: 1.375rem;
+  --soul-font-size-2-xl: 1.6875rem;
+  --soul-font-size-3-xl: 2rem;
+  --soul-line-height-2-xs: 0.75rem;
+  --soul-line-height-xs: 1rem;
+  --soul-line-height-s: 1rem;
+  --soul-line-height-m: 1.25rem;
+  --soul-line-height-l: 1.5rem;
+  --soul-line-height-xl: 1.75rem;
+  --soul-line-height-2-xl: 2.25rem;
+  --soul-line-height-3-xl: 2.5rem;
+}
+
+.soul-font-scale-s {
+  --soul-font-size-2-xs: 0.5625rem;
+  --soul-font-size-xs: 0.6875rem;
+  --soul-font-size-s: 0.8125rem;
+  --soul-font-size-m: 1rem;
+  --soul-font-size-l: 1.125rem;
+  --soul-font-size-xl: 1.375rem;
+  --soul-font-size-2-xl: 1.6875rem;
+  --soul-font-size-3-xl: 2rem;
+  --soul-line-height-2-xs: 0.75rem;
+  --soul-line-height-xs: 1rem;
+  --soul-line-height-s: 1.25rem;
+  --soul-line-height-m: 1.5rem;
+  --soul-line-height-l: 1.75rem;
+  --soul-line-height-xl: 2.25rem;
+  --soul-line-height-2-xl: 2.5rem;
+  --soul-line-height-3-xl: 3rem;
+}
+
+.soul-font-scale-m {
+  --soul-font-size-2-xs: 0.6875rem;
+  --soul-font-size-xs: 0.8125rem;
+  --soul-font-size-s: 1rem;
+  --soul-font-size-m: 1.125rem;
+  --soul-font-size-l: 1.375rem;
+  --soul-font-size-xl: 1.6875rem;
+  --soul-font-size-2-xl: 2rem;
+  --soul-font-size-3-xl: 2.4375rem;
+  --soul-line-height-2-xs: 1rem;
+  --soul-line-height-xs: 1.25rem;
+  --soul-line-height-s: 1.5rem;
+  --soul-line-height-m: 1.75rem;
+  --soul-line-height-l: 2.25rem;
+  --soul-line-height-xl: 2.5rem;
+  --soul-line-height-2-xl: 3rem;
+  --soul-line-height-3-xl: 3.5rem;
+}
+
+.soul-font-scale-l {
+  --soul-font-size-2-xs: 0.6875rem;
+  --soul-font-size-xs: 0.8125rem;
+  --soul-font-size-s: 1rem;
+  --soul-font-size-m: 1.25rem;
+  --soul-font-size-l: 1.6875rem;
+  --soul-font-size-xl: 2rem;
+  --soul-font-size-2-xl: 3rem;
+  --soul-font-size-3-xl: 3.5rem;
+  --soul-line-height-2-xs: 1rem;
+  --soul-line-height-xs: 1.25rem;
+  --soul-line-height-s: 1.5rem;
+  --soul-line-height-m: 1.75rem;
+  --soul-line-height-l: 2.25rem;
+  --soul-line-height-xl: 2.5rem;
+  --soul-line-height-2-xl: 3.5rem;
+  --soul-line-height-3-xl: 4rem;
+}
+
+body,
+.soul-font-scale-l,
+.soul-font-scale-m,
+.soul-font-scale-s,
+.soul-font-scale-xs {
+  font-size: var(--soul-font-size-s);
+  line-height: var(--soul-line-height-s);
+}
+
+/*------------------------------------*\
+    $ABSTRACT-HEADING
+\*------------------------------------*/
+/*------------------------------------*\
+    $HEADING-VARIANTS
+\*------------------------------------*/
+/*------------------------------------*\
+    $TYPOGRAPHY
+\*------------------------------------*/
+.soul-content li {
+  margin: 0.75rem 0 0 0;
+}
+.soul-content h1,
+.soul-content h2,
+.soul-content h3,
+.soul-content h4,
+.soul-content h5,
+.soul-content h6 {
+  --soul-heading-h1-letter-spacing: -0.04em;
+  --soul-heading-h2-letter-spacing: -0.04em;
+  --soul-heading-h3-letter-spacing: -0.03em;
+  --soul-heading-h4-letter-spacing: -0.02em;
+  --soul-heading-h5-letter-spacing: 0em;
+  --soul-heading-h6-letter-spacing: 0.03em;
+  letter-spacing: var(--_soul-heading-letter-spacing);
+  margin: 3rem 0 0 0;
+}
+.soul-content > h1:first-child,
+.soul-content > h2:first-child,
+.soul-content > h3:first-child,
+.soul-content > h4:first-child,
+.soul-content > h5:first-child,
+.soul-content > h6:first-child {
+  margin: 0;
+}
+.soul-content p,
+.soul-content details,
+.soul-content pre,
+.soul-content blockquote,
+.soul-content table {
+  margin: 1rem 0 0 0;
+}
+.soul-content > p:first-child,
+.soul-content > details:first-child,
+.soul-content > pre:first-child,
+.soul-content > blockquote:first-child,
+.soul-content > table:first-child {
+  margin: 0;
+}
+.soul-content li > p,
+.soul-content li > details,
+.soul-content li > pre,
+.soul-content li > blockquote,
+.soul-content li > table {
+  margin: 0.5rem 0 0 0;
+}
+.soul-content a {
+  color: var(--soul-theme-color-text-link-on-light);
+  text-decoration: none;
+  border-radius: 0.25rem;
+  text-decoration: underline;
+  --_soul-content-code-text-color: currentcolor;
+}
+@media (hover: hover) and (pointer: fine) {
+  .soul-content a:hover {
+    text-decoration: underline;
+  }
+}
+.soul-content a:focus {
+  text-decoration: underline;
+}
+.soul-content a:focus-visible:not(:disabled) {
+  outline: none;
+  position: relative;
+  box-shadow: 0px 0px 0px 2px var(--soul-theme-color-primary-200);
+}
+.soul-content a .a-icon:before {
+  display: inline-block;
+}
+.soul-content ul,
+.soul-content ol,
+.soul-content blockquote {
+  padding: 0 0 0 2rem;
+}
+.soul-content code {
+  padding: 0.125rem;
+}
+.soul-content code,
+.soul-content pre {
+  color: var(--_soul-content-code-text-color, var(--soul-theme-color-text-on-light));
+  background-color: var(--soul-theme-color-neutral-100);
+  border-radius: 0.25rem;
+}
+.soul-content pre {
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--soul-theme-color-neutral-200);
+  padding: 0.25rem;
+  overflow: auto;
+}
+.soul-content blockquote {
+  border-left-style: solid;
+  border-left-width: 4px;
+  border-left-color: var(--soul-theme-color-neutral-200);
+}
+.soul-content table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.soul-content td {
+  vertical-align: top;
+}
+.soul-content th {
+  font-family: "soul-sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--soul-theme-color-text-bold-on-light);
+}
+.soul-content td,
+.soul-content th {
+  padding: 0.5rem 1rem;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--soul-theme-color-neutral-200);
+  text-align: left;
+}
+.soul-content img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+.soul-content img:not(:first-child) {
+  padding: 1rem 0 0 0;
+}
+.soul-content li > img {
+  margin: 0;
+  padding: 0.25rem 0 0 0;
+}
+.soul-content strong,
+.soul-content .h-text-bold {
+  font-family: "soul-sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--soul-theme-color-text-bold-on-light);
+}
+
+.soul-content--on-dark {
+  font-family: "soul-sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 320;
+  font-style: normal;
+  color: hsl(0, 0%, 100%);
+}
+.soul-content--on-dark h1,
+.soul-content--on-dark h2,
+.soul-content--on-dark h3,
+.soul-content--on-dark h4,
+.soul-content--on-dark h5,
+.soul-content--on-dark h6 {
+  color: hsl(0, 0%, 100%);
+}
+.soul-content--on-dark th,
+.soul-content--on-dark strong,
+.soul-content--on-dark .h-text-bold {
+  color: hsl(0, 0%, 100%);
+  font-family: "soul-sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+.soul-content--on-dark a {
+  color: var(--soul-theme-color-text-link-on-dark);
+}
+.soul-content--on-dark ::-moz-selection {
+  background-color: var(--soul-theme-color-primary-50);
+  color: var(--soul-theme-color-text-on-light);
+}
+.soul-content--on-dark mark,
+.soul-content--on-dark ::selection {
+  background-color: var(--soul-theme-color-primary-50);
+  color: var(--soul-theme-color-text-on-light);
+}
+
+:host {
+  display: block;
+}

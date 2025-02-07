@@ -1,0 +1,61 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+const index = require('./index-a33e737d.js');
+const SelectHelper = require('./SelectHelper-8adc5ea5.js');
+
+const soulOptionGroupCss = ":root{--soul-assets-folder:./assets/}@font-face{font-family:\"soul-sans\";src:url(\"./assets//soul-roman.woff2\") format(\"woff2\");font-weight:100 700;font-display:swap}@font-face{font-family:\"soul-mono\";src:url(\"./assets//soul-mono.woff2\") format(\"woff2\");font-display:swap}@font-face{font-family:\"soul\";src:url(\"./assets//soul-icons.woff2\") format(\"woff2\");font-display:block}.soul-label{display:block;font-size:var(--soul-font-size-s);line-height:var(--soul-line-height-s);transition-property:color;transition-duration:300ms;transition-timing-function:ease;color:var(--soul-theme-color-text-on-light)}.soul-label--inline{display:inline-block}.soul-label--input{font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:450;font-style:normal}.soul-label--reduced{color:var(--soul-theme-color-neutral-500)}.soul-label--key{font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:320;font-style:normal;color:var(--soul-theme-color-neutral-500)}.soul-label--stat{font-size:var(--soul-font-size-l);line-height:var(--soul-line-height-l)}.soul-label--strong{font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:500;font-style:normal;color:var(--soul-theme-color-text-bold-on-light)}.soul-label--mono{font-family:\"soul-mono\", \"Menlo\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", Courier, monospace}.soul-label--micro{font-size:var(--soul-font-size-xs);line-height:var(--soul-line-height-xs)}.soul-label--warning{color:hsl(43, 77%, 27%)}.soul-label--negative{color:hsl(0, 72%, 38%)}.soul-label--positive{color:hsl(125, 56%, 29%)}.soul-label--data-type{font-family:\"soul-mono\", \"Menlo\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", Courier, monospace;color:hsl(262, 48%, 46%);font-size:var(--soul-font-size-xs);line-height:var(--soul-line-height-xs)}:host{display:block}:host([data-filtered]),:host([hidden]:not([hidden=false])){display:none}.soul-option-group__label{padding:0.25rem 0.5rem}.soul-option-group__options ::slotted(soul-text-option),.soul-option-group__options ::slotted(soul-avatar-option){padding:0.125rem 0.25rem}:host([disabled]:not([disabled=false])) .soul-option-group{opacity:0.75;cursor:not-allowed}";
+
+const SoulOptionGroup = class {
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+    this.label = undefined;
+    this.disabled = undefined;
+    this.hidden = undefined;
+  }
+  componentWillLoad() {
+    this.mutationObserver = new MutationObserver(() => {
+      const areOptionsFiltered = this.optionsElement.assignedElements().every(option => option.hasAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE));
+      if (areOptionsFiltered) {
+        this.hostElement.setAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE, 'true');
+      }
+      else {
+        this.hostElement.removeAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE);
+      }
+    });
+  }
+  componentDidLoad() {
+    this.onDisabledChanged();
+    this.onHiddenChanged();
+  }
+  onDisabledChanged() {
+    this.optionsElement.assignedElements().forEach(option => {
+      this.disabled ? option.setAttribute(SelectHelper.SelectHelper.GROUP_DISABLED_ATTRIBUTE, `${this.disabled}`) : option.removeAttribute(SelectHelper.SelectHelper.GROUP_DISABLED_ATTRIBUTE);
+    });
+  }
+  onHiddenChanged() {
+    this.optionsElement.assignedElements().forEach(option => {
+      this.hidden ? option.setAttribute(SelectHelper.SelectHelper.GROUP_HIDDEN_ATTRIBUTE, `${this.hidden}`) : option.removeAttribute(SelectHelper.SelectHelper.GROUP_HIDDEN_ATTRIBUTE);
+    });
+  }
+  render() {
+    return (index.h(index.Host, null, index.h("div", { class: "soul-option-group" }, index.h("span", { class: "soul-option-group__label soul-label soul-label--strong" }, this.label), index.h("div", { class: "soul-option-group__options" }, index.h("slot", { ref: el => this.optionsElement = el, onSlotchange: this.onSlotChanged.bind(this) })))));
+  }
+  onSlotChanged() {
+    this.mutationObserver.disconnect();
+    this.optionsElement.assignedElements().forEach(option => {
+      this.mutationObserver.observe(option, { attributes: true });
+    });
+  }
+  get hostElement() { return index.getElement(this); }
+  static get watchers() { return {
+    "disabled": ["onDisabledChanged"],
+    "hidden": ["onHiddenChanged"]
+  }; }
+};
+SoulOptionGroup.style = soulOptionGroupCss;
+
+exports.soul_option_group = SoulOptionGroup;
+
+//# sourceMappingURL=soul-option-group.cjs.entry.js.map

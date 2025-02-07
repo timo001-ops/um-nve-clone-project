@@ -1,0 +1,35 @@
+{
+  "entries": [
+    "./components/soul-avatar/soul-avatar.js",
+    "./components/soul-avatar-group/soul-avatar-group.js",
+    "./components/soul-avatar-option/soul-avatar-option.js",
+    "./components/soul-benefit-modal/soul-benefit-modal.js",
+    "./components/soul-empty-state/soul-empty-state.js",
+    "./components/soul-file-icon/soul-file-icon.js",
+    "./components/soul-icon/soul-icon.js",
+    "./components/soul-indicator/soul-indicator.js",
+    "./components/soul-input-wrapper/soul-input-wrapper.component.js",
+    "./components/soul-markdown-display/soul-markdown-content.component.js",
+    "./components/soul-modal/soul-modal.js",
+    "./components/soul-option-group/soul-option-group.js",
+    "./components/soul-prefetch/soul-prefetch.js",
+    "./components/soul-progress-bar/soul-progress-bar.js",
+    "./components/soul-progress-ring/soul-progress-ring.js",
+    "./components/soul-select/soul-select.js",
+    "./components/soul-skeleton-key-value/soul-skeleton-key-value.js",
+    "./components/soul-skeleton-label/soul-skeleton-label.js",
+    "./components/soul-skeleton-table/soul-skeleton-table.js",
+    "./components/soul-skeleton-text/soul-skeleton-text.js",
+    "./components/soul-skeleton-thumbnail/soul-skeleton-thumbnail.js",
+    "./components/soul-table-wrapper/soul-table-wrapper.js",
+    "./components/soul-text-option/soul-text-option.js",
+    "./components/soul-tooltip/soul-tooltip.component.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "3.4.2",
+    "typescriptVersion": "5.0.4"
+  },
+  "collections": [],
+  "bundles": []
+}

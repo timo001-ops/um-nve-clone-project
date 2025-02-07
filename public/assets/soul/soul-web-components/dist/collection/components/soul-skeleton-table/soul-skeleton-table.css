@@ -1,0 +1,1274 @@
+/*----------------*\
+    $CONSTANTS
+\*----------------*/
+/**
+ * ASSET FOLDER
+ */
+:root {
+  --soul-assets-folder: ./assets/;
+}
+
+/*------------------------------------*\
+    $VARIANT_LABELS
+\*------------------------------------*/
+/*------------------------------------*\
+    $DIRECTIONS
+\*------------------------------------*/
+/**
+ * Z-INDEX
+ */
+/**
+ * RADIUS
+ */
+/**
+ * COLUMN WIDTHS
+ */
+/**
+ * OPACITY
+ */
+/**
+ * SHADOWS
+ */
+/*------------------------------------*\
+    $BREAKPOINTS
+\*------------------------------------*/
+/*------------------------------------*\
+    $ANIMATIONS
+\*------------------------------------*/
+/*------------------------------------*\
+    $SEVERITIES
+\*------------------------------------*/
+/*------------------------------------*\
+    $TYPEFACES
+\*------------------------------------*/
+@font-face {
+  font-family: "soul-sans";
+  src: url("./assets//soul-roman.woff2") format("woff2");
+  font-weight: 100 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "soul-mono";
+  src: url("./assets//soul-mono.woff2") format("woff2");
+  font-display: swap;
+}
+/*------------------------------------*\
+    $BACKGROUND-IMAGE
+\*------------------------------------*/
+/*------------------------------------*\
+    $FLEXBOX_MIXINS
+\*------------------------------------*/
+/**
+ * Create display:flex property with all vendor prefixes on value
+ */
+/*------------------------------------*\
+    $POSITION
+\*------------------------------------*/
+/*------------------------------------*\
+    $FULL-SCREEN
+\*------------------------------------*/
+/*------------------------------------*\
+    $INLINE-BLOCK-SPACING-FIX
+\*------------------------------------*/
+/*------------------------------------*\
+    $PLACEHOLDER
+\*------------------------------------*/
+/*------------------------------------*\
+    $POSITION
+\*------------------------------------*/
+/*------------------------------------*\
+    $PULL-MARGIN
+\*------------------------------------*/
+/*------------------------------------*\
+    $SCROLL
+\*------------------------------------*/
+/*------------------------------------*\
+    $GRID
+\*------------------------------------*/
+/*------------------------------------*\
+    $SHAPES
+\*------------------------------------*/
+/*------------------------------------*\
+    $TRANSITION
+\*------------------------------------*/
+/*------------------------------------*\
+    $USER-SELECT
+\*------------------------------------*/
+/*------------------------------------*\
+    $FONT_COLLECTIONS
+\*------------------------------------*/
+/*------------------------------------*\
+    $FONT_MIXINS
+\*------------------------------------*/
+/*------------------------------------*\
+    $FONT_FUNCTIONS
+\*------------------------------------*/
+/*------------------------------------*\
+    $ICONS
+\*------------------------------------*/
+/*------------------------------------*\
+    Deprecated
+\*------------------------------------*/
+@font-face {
+  font-family: "soul";
+  src: url("./assets//soul-icons.woff2") format("woff2");
+  font-display: block;
+}
+/*------------------------------------*\
+    $INPUT-STATES
+\*------------------------------------*/
+/*------------------------------------*\
+    $BUTTON-ELEMENT
+\*------------------------------------*/
+/*------------------------------------*\
+    $FOCUS-OUTLINE
+\*------------------------------------*/
+/*------------------------------------*\
+    $LINK
+\*------------------------------------*/
+/*------------------------------------*\
+    $SCROLL-FADE
+\*------------------------------------*/
+/*------------------------------------*\
+    $TEXT_MIXINS
+\*------------------------------------*/
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/*------------------------------------*\
+    $TABLE-CONTAINER
+\*------------------------------------*/
+.soul-table-container {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/*------------------------------------*\
+    $TABLE
+\*------------------------------------*/
+.soul-table {
+  width: 100%;
+  border-spacing: 0;
+  display: table;
+}
+.soul-table tbody:first-child .soul-table-row:first-child .soul-table-cell {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: var(--soul-theme-color-neutral-200);
+}
+
+.soul-table--regular .soul-table-cell,
+.soul-table--regular .soul-table-header {
+  padding: 0.5rem;
+}
+
+.soul-table--compact .soul-table-cell,
+.soul-table--compact .soul-table-header {
+  padding: 0.25rem;
+}
+
+.soul-table--comfortable .soul-table-cell,
+.soul-table--comfortable .soul-table-header {
+  padding: 1rem;
+}
+
+.soul-table--regular .soul-table-cell--header,
+.soul-table--compact .soul-table-cell--header,
+.soul-table--comfortable .soul-table-cell--header {
+  padding: 0;
+}
+
+.soul-table--hoverable {
+  --_soul-table-row-background-color-hover: var(--soul-theme-color-neutral-100);
+}
+.soul-table--hoverable .soul-table-row:focus-within {
+  background-color: var(--_soul-table-row-background-color-hover);
+}
+@media (hover: hover) and (pointer: fine) {
+  .soul-table--hoverable .soul-table-row:hover {
+    background-color: var(--_soul-table-row-background-color-hover);
+  }
+}
+
+.soul-table--on-alternative {
+  --_soul-table-row-background-color-hover: hsl(0, 0%, 100%);
+}
+.soul-table--on-alternative .soul-table-cell--header {
+  background-color: var(--soul-theme-color-neutral-100);
+}
+
+/*------------------------------------*\
+    $TABLE-CELL
+\*------------------------------------*/
+.soul-table-cell {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: var(--soul-theme-color-neutral-200);
+  white-space: nowrap;
+  display: table-cell;
+}
+
+.soul-table-cell--numeric {
+  text-align: right;
+}
+
+.soul-table-cell--width-5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 5%;
+}
+
+.soul-table-cell--width-10 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 10%;
+}
+
+.soul-table-cell--width-15 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 15%;
+}
+
+.soul-table-cell--width-20 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 20%;
+}
+
+.soul-table-cell--width-25 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 25%;
+}
+
+.soul-table-cell--width-30 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 30%;
+}
+
+.soul-table-cell--width-35 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 35%;
+}
+
+.soul-table-cell--width-40 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 40%;
+}
+
+.soul-table-cell--width-45 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 45%;
+}
+
+.soul-table-cell--width-50 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 50%;
+}
+
+.soul-table-cell--width-55 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 55%;
+}
+
+.soul-table-cell--width-60 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 60%;
+}
+
+.soul-table-cell--width-65 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 65%;
+}
+
+.soul-table-cell--width-70 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 70%;
+}
+
+.soul-table-cell--width-75 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 75%;
+}
+
+.soul-table-cell--width-80 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 80%;
+}
+
+.soul-table-cell--width-85 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 85%;
+}
+
+.soul-table-cell--width-90 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 90%;
+}
+
+.soul-table-cell--width-95 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 95%;
+}
+
+.soul-table-cell--width-100 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 100%;
+}
+
+.soul-table-cell--header {
+  position: sticky;
+  top: 0;
+  background-color: hsl(0, 0%, 100%);
+  z-index: 5000;
+}
+
+/*------------------------------------*\
+    $TABLE-CELL RESPONSIVE
+\*------------------------------------*/
+.soul-table--xs .soul-table-cell--xs-hidden {
+  display: none;
+}
+.soul-table--xs .soul-table-cell--xs-fit-content {
+  max-width: unset;
+  width: unset;
+}
+.soul-table--xs .soul-table-cell--xs-width-5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 5%;
+}
+.soul-table--xs .soul-table-cell--xs-width-10 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 10%;
+}
+.soul-table--xs .soul-table-cell--xs-width-15 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 15%;
+}
+.soul-table--xs .soul-table-cell--xs-width-20 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 20%;
+}
+.soul-table--xs .soul-table-cell--xs-width-25 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 25%;
+}
+.soul-table--xs .soul-table-cell--xs-width-30 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 30%;
+}
+.soul-table--xs .soul-table-cell--xs-width-35 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 35%;
+}
+.soul-table--xs .soul-table-cell--xs-width-40 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 40%;
+}
+.soul-table--xs .soul-table-cell--xs-width-45 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 45%;
+}
+.soul-table--xs .soul-table-cell--xs-width-50 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 50%;
+}
+.soul-table--xs .soul-table-cell--xs-width-55 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 55%;
+}
+.soul-table--xs .soul-table-cell--xs-width-60 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 60%;
+}
+.soul-table--xs .soul-table-cell--xs-width-65 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 65%;
+}
+.soul-table--xs .soul-table-cell--xs-width-70 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 70%;
+}
+.soul-table--xs .soul-table-cell--xs-width-75 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 75%;
+}
+.soul-table--xs .soul-table-cell--xs-width-80 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 80%;
+}
+.soul-table--xs .soul-table-cell--xs-width-85 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 85%;
+}
+.soul-table--xs .soul-table-cell--xs-width-90 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 90%;
+}
+.soul-table--xs .soul-table-cell--xs-width-95 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 95%;
+}
+.soul-table--xs .soul-table-cell--xs-width-100 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 100%;
+}
+
+.soul-table--s .soul-table-cell--s-hidden {
+  display: none;
+}
+.soul-table--s .soul-table-cell--s-fit-content {
+  max-width: unset;
+  width: unset;
+}
+.soul-table--s .soul-table-cell--s-width-5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 5%;
+}
+.soul-table--s .soul-table-cell--s-width-10 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 10%;
+}
+.soul-table--s .soul-table-cell--s-width-15 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 15%;
+}
+.soul-table--s .soul-table-cell--s-width-20 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 20%;
+}
+.soul-table--s .soul-table-cell--s-width-25 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 25%;
+}
+.soul-table--s .soul-table-cell--s-width-30 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 30%;
+}
+.soul-table--s .soul-table-cell--s-width-35 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 35%;
+}
+.soul-table--s .soul-table-cell--s-width-40 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 40%;
+}
+.soul-table--s .soul-table-cell--s-width-45 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 45%;
+}
+.soul-table--s .soul-table-cell--s-width-50 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 50%;
+}
+.soul-table--s .soul-table-cell--s-width-55 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 55%;
+}
+.soul-table--s .soul-table-cell--s-width-60 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 60%;
+}
+.soul-table--s .soul-table-cell--s-width-65 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 65%;
+}
+.soul-table--s .soul-table-cell--s-width-70 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 70%;
+}
+.soul-table--s .soul-table-cell--s-width-75 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 75%;
+}
+.soul-table--s .soul-table-cell--s-width-80 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 80%;
+}
+.soul-table--s .soul-table-cell--s-width-85 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 85%;
+}
+.soul-table--s .soul-table-cell--s-width-90 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 90%;
+}
+.soul-table--s .soul-table-cell--s-width-95 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 95%;
+}
+.soul-table--s .soul-table-cell--s-width-100 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 100%;
+}
+
+.soul-table--m .soul-table-cell--m-hidden {
+  display: none;
+}
+.soul-table--m .soul-table-cell--m-fit-content {
+  max-width: unset;
+  width: unset;
+}
+.soul-table--m .soul-table-cell--m-width-5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 5%;
+}
+.soul-table--m .soul-table-cell--m-width-10 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 10%;
+}
+.soul-table--m .soul-table-cell--m-width-15 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 15%;
+}
+.soul-table--m .soul-table-cell--m-width-20 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 20%;
+}
+.soul-table--m .soul-table-cell--m-width-25 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 25%;
+}
+.soul-table--m .soul-table-cell--m-width-30 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 30%;
+}
+.soul-table--m .soul-table-cell--m-width-35 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 35%;
+}
+.soul-table--m .soul-table-cell--m-width-40 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 40%;
+}
+.soul-table--m .soul-table-cell--m-width-45 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 45%;
+}
+.soul-table--m .soul-table-cell--m-width-50 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 50%;
+}
+.soul-table--m .soul-table-cell--m-width-55 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 55%;
+}
+.soul-table--m .soul-table-cell--m-width-60 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 60%;
+}
+.soul-table--m .soul-table-cell--m-width-65 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 65%;
+}
+.soul-table--m .soul-table-cell--m-width-70 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 70%;
+}
+.soul-table--m .soul-table-cell--m-width-75 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 75%;
+}
+.soul-table--m .soul-table-cell--m-width-80 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 80%;
+}
+.soul-table--m .soul-table-cell--m-width-85 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 85%;
+}
+.soul-table--m .soul-table-cell--m-width-90 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 90%;
+}
+.soul-table--m .soul-table-cell--m-width-95 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 95%;
+}
+.soul-table--m .soul-table-cell--m-width-100 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 100%;
+}
+
+.soul-table--l .soul-table-cell--l-hidden {
+  display: none;
+}
+.soul-table--l .soul-table-cell--l-fit-content {
+  max-width: unset;
+  width: unset;
+}
+.soul-table--l .soul-table-cell--l-width-5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 5%;
+}
+.soul-table--l .soul-table-cell--l-width-10 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 10%;
+}
+.soul-table--l .soul-table-cell--l-width-15 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 15%;
+}
+.soul-table--l .soul-table-cell--l-width-20 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 20%;
+}
+.soul-table--l .soul-table-cell--l-width-25 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 25%;
+}
+.soul-table--l .soul-table-cell--l-width-30 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 30%;
+}
+.soul-table--l .soul-table-cell--l-width-35 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 35%;
+}
+.soul-table--l .soul-table-cell--l-width-40 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 40%;
+}
+.soul-table--l .soul-table-cell--l-width-45 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 45%;
+}
+.soul-table--l .soul-table-cell--l-width-50 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 50%;
+}
+.soul-table--l .soul-table-cell--l-width-55 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 55%;
+}
+.soul-table--l .soul-table-cell--l-width-60 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 60%;
+}
+.soul-table--l .soul-table-cell--l-width-65 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 65%;
+}
+.soul-table--l .soul-table-cell--l-width-70 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 70%;
+}
+.soul-table--l .soul-table-cell--l-width-75 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 75%;
+}
+.soul-table--l .soul-table-cell--l-width-80 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 80%;
+}
+.soul-table--l .soul-table-cell--l-width-85 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 85%;
+}
+.soul-table--l .soul-table-cell--l-width-90 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 90%;
+}
+.soul-table--l .soul-table-cell--l-width-95 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 95%;
+}
+.soul-table--l .soul-table-cell--l-width-100 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 100%;
+}
+
+.soul-table--xl .soul-table-cell--xl-hidden {
+  display: none;
+}
+.soul-table--xl .soul-table-cell--xl-fit-content {
+  max-width: unset;
+  width: unset;
+}
+.soul-table--xl .soul-table-cell--xl-width-5 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 5%;
+}
+.soul-table--xl .soul-table-cell--xl-width-10 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 10%;
+}
+.soul-table--xl .soul-table-cell--xl-width-15 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 15%;
+}
+.soul-table--xl .soul-table-cell--xl-width-20 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 20%;
+}
+.soul-table--xl .soul-table-cell--xl-width-25 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 25%;
+}
+.soul-table--xl .soul-table-cell--xl-width-30 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 30%;
+}
+.soul-table--xl .soul-table-cell--xl-width-35 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 35%;
+}
+.soul-table--xl .soul-table-cell--xl-width-40 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 40%;
+}
+.soul-table--xl .soul-table-cell--xl-width-45 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 45%;
+}
+.soul-table--xl .soul-table-cell--xl-width-50 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 50%;
+}
+.soul-table--xl .soul-table-cell--xl-width-55 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 55%;
+}
+.soul-table--xl .soul-table-cell--xl-width-60 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 60%;
+}
+.soul-table--xl .soul-table-cell--xl-width-65 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 65%;
+}
+.soul-table--xl .soul-table-cell--xl-width-70 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 70%;
+}
+.soul-table--xl .soul-table-cell--xl-width-75 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 75%;
+}
+.soul-table--xl .soul-table-cell--xl-width-80 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 80%;
+}
+.soul-table--xl .soul-table-cell--xl-width-85 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 85%;
+}
+.soul-table--xl .soul-table-cell--xl-width-90 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 90%;
+}
+.soul-table--xl .soul-table-cell--xl-width-95 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 95%;
+}
+.soul-table--xl .soul-table-cell--xl-width-100 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 1vw;
+  width: 100%;
+}
+
+/*------------------------------------*\
+    $TABLE-HEADER
+\*------------------------------------*/
+.soul-table-header {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  background-color: hsla(0, 0%, 100%, 0);
+  cursor: pointer;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5rem;
+  width: 100%;
+}
+.soul-table-header::-moz-focus-inner {
+  border: none;
+}
+
+.soul-table-cell--numeric .soul-table-header {
+  flex-direction: row-reverse;
+}
+
+.soul-table-header--sortable:focus-visible:not(:disabled) {
+  outline: none;
+  position: relative;
+  box-shadow: inset 0px 0px 0px 2px var(--soul-theme-color-primary-200);
+}
+
+.soul-table-header:not(.soul-table-header--sortable) {
+  cursor: initial;
+}
+
+.soul-table-header__title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-size: var(--soul-font-size-xs);
+  line-height: var(--soul-line-height-xs);
+  font-family: "soul-sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  color: var(--soul-theme-color-neutral-500);
+}
+
+.soul-table-header__sort-indicator {
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+  display: inline-block;
+  padding: 0 0 0 0.25rem;
+}
+.soul-table-header__sort-indicator:before {
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+}
+
+.soul-table-cell--numeric .soul-table-header__sort-indicator {
+  padding: 0 0.25rem 0 0;
+}
+
+.soul-table-header__sort-indicator {
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+}
+.soul-table-header__sort-indicator:before {
+  content: "";
+  -webkit-mask-image: url("./assets//sprite/core-icons.stack.svg#sort-none");
+          mask-image: url("./assets//sprite/core-icons.stack.svg#sort-none");
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  display: block;
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+}
+
+.is-sort-none .soul-table-header__sort-indicator {
+  opacity: 0.25;
+}
+
+.is-sort-ascending .soul-table-header__sort-indicator {
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+}
+.is-sort-ascending .soul-table-header__sort-indicator:before {
+  content: "";
+  -webkit-mask-image: url("./assets//sprite/core-icons.stack.svg#sort-ascending");
+          mask-image: url("./assets//sprite/core-icons.stack.svg#sort-ascending");
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  display: block;
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+}
+
+.is-sort-descending .soul-table-header__sort-indicator {
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+}
+.is-sort-descending .soul-table-header__sort-indicator:before {
+  content: "";
+  -webkit-mask-image: url("./assets//sprite/core-icons.stack.svg#sort-descending");
+          mask-image: url("./assets//sprite/core-icons.stack.svg#sort-descending");
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  display: block;
+  width: var(--soul-font-size-s);
+  height: var(--soul-font-size-s);
+}
+
+/*------------------------------------*\
+    $TABLE-ROW
+\*------------------------------------*/
+.soul-table-row--highlighted {
+  --_soul-table-row-background-color-hover: var(--soul-theme-color-primary-50);
+  background-color: var(--soul-theme-color-primary-50);
+}
+
+:host {
+  display: block;
+}
+
+.soul-table-cell {
+  padding: 0.5rem;
+}
+
+soul-skeleton-label {
+  width: 50%;
+}

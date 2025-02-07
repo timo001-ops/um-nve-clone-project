@@ -1,0 +1,2 @@
+class e{validateSize(e,i){if(!this.isValidSize(e,i)){console.debug(`Size ${i} not supported. Supported sizes: ${e.join(", ")}`)}}isValidSize(e,i){return e.includes(i)}}export{e as S};
+//# sourceMappingURL=p-80583b0c.js.map

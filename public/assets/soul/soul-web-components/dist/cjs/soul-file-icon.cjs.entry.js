@@ -1,0 +1,54 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+const index = require('./index-a33e737d.js');
+const IconMap = require('./IconMap-75967faa.js');
+const AssetsFolderHelper = require('./AssetsFolderHelper-5ae1532b.js');
+const StatusHelper = require('./StatusHelper-83d44969.js');
+const utils = require('./utils-b4bbc9bf.js');
+const SizeHelper = require('./SizeHelper-42d05c58.js');
+
+const soulFileIconCss = ":root{--soul-assets-folder:./assets/}@font-face{font-family:\"soul-sans\";src:url(\"./assets//soul-roman.woff2\") format(\"woff2\");font-weight:100 700;font-display:swap}@font-face{font-family:\"soul-mono\";src:url(\"./assets//soul-mono.woff2\") format(\"woff2\");font-display:swap}@font-face{font-family:\"soul\";src:url(\"./assets//soul-icons.woff2\") format(\"woff2\");font-display:block}:host{--soul-file-icon-size:var(--soul-font-size-s);display:flex;align-items:center;justify-content:center;position:relative;width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host .soul-file-icon__icon{width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([inline]),:host([inline=true]){display:inline-flex}:host([inline=false]){display:flex}:host([size=s]){--soul-file-icon-size:var(--soul-font-size-s);width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=s]) .soul-file-icon__icon{width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=m]){--soul-file-icon-size:var(--soul-font-size-m);width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=m]) .soul-file-icon__icon{width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=l]){--soul-file-icon-size:var(--soul-font-size-l);width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=l]) .soul-file-icon__icon{width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=xl]){--soul-file-icon-size:var(--soul-font-size-xl);width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=xl]) .soul-file-icon__icon{width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=\"2-xl\"]){--soul-file-icon-size:var(--soul-font-size-2-xl);width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=\"2-xl\"]) .soul-file-icon__icon{width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=\"3-xl\"]){--soul-file-icon-size:var(--soul-font-size-3-xl);width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}:host([size=\"3-xl\"]) .soul-file-icon__icon{width:var(--soul-file-icon-size);height:var(--soul-file-icon-size)}.soul-file-icon__indicator{position:absolute;bottom:20%;right:14%;transform:translate(50%, 50%);width:70%;height:70%}.soul-file-icon__reference{position:absolute;transform:translate(50%, 50%);background-repeat:no-repeat;background-image:url('data:image/svg+xml;utf-8,<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 323.84 264.44\"><path d=\"M9.2,238.25C11,219.1,17.43,185.47,40,152.78c33.1-48,79.63-75.09,138.31-80.58l5.9-.54V12.1c0-2.85.39-3,.71-3.18a3.27,3.27,0,0,1,1.23-.34,4.29,4.29,0,0,1,2.53,1.11l.1.09.1.08q30,23.85,60,47.64l62.07,49.3c2,1.6,4.43,4.12,4.43,7s-2.38,5.43-4.37,7q-31.86,25.32-63.74,50.62-29.17,23.22-58.34,46.4l-.1.08-.1.09a4.48,4.48,0,0,1-2.57,1.12,3.28,3.28,0,0,1-1.2-.31c-.44-.2-.82-.37-.81-3.14V154.74l-6.73.23c-38,1.3-72.57,10.48-102.68,27.27C50.5,195.75,28.51,214.56,9.2,238.25Z\"/><path d=\"M0,264.44l.06-13.72C.11,237.73,2.64,191.94,33,148,67.21,98.3,115.21,70,175.67,63.91V12.12c0-2.49,0-8.32,5.59-10.88A11.79,11.79,0,0,1,186.07.1l4.6-.1V1.09a12.84,12.84,0,0,1,3.56,2.23q29.94,23.79,59.89,47.55,31.08,24.66,62.08,49.31c6.31,4.93,7.64,10.17,7.64,13.7s-1.32,8.72-7.62,13.67q-31.82,25.3-63.71,50.6-29.12,23.11-58.23,46.25a13,13,0,0,1-7.84,3.22h-.34a11.63,11.63,0,0,1-4.85-1.15c-5-2.28-5.64-6.76-5.64-10.83v-52.1c-35.86,1.51-68.4,10.3-96.77,26.12-26.48,14.77-50.25,36.22-70.67,63.75ZM192.67,23.78V79.45l-13.62,1.27C123,86,78.53,111.84,47,157.65a170.54,170.54,0,0,0-23.22,49.46c-.35,1.24-.7,2.48-1,3.73a227.77,227.77,0,0,1,47.84-36c31.29-17.46,67.14-27,106.54-28.35l15.52-.53V204L242,164.82C263.1,148,284.54,131,305.66,114.23l.43-.36c-.13-.12-.28-.25-.45-.38L243.56,64.18Q218.12,44,192.67,23.78Z\" style=\"fill:%23fff\"/><path d=\"M192.67,23.78V79.45l-13.62,1.27C123,86,78.53,111.84,47,157.65a170.54,170.54,0,0,0-23.22,49.46c-.35,1.24-.7,2.48-1,3.73a227.77,227.77,0,0,1,47.84-36c31.29-17.46,67.14-27,106.54-28.35l15.52-.53V204L242,164.82C263.1,148,284.54,131,305.66,114.23l.43-.36c-.13-.12-.28-.25-.45-.38L243.56,64.18Q218.12,44,192.67,23.78Z\"/></svg>');width:62%;height:62%;top:-30%;right:11%}soul-indicator{--soul-indicator-size:100%}";
+
+const SoulFileIcon = class {
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+    this.supportedSizes = ['s', 'm', 'l', 'xl', '2-xl', '3-xl'];
+    this.supportedStatuses = ['positive', 'warning', 'critical', 'not-allowed', 'waiting'];
+    this.statusHelper = new StatusHelper.StatusHelper();
+    this.sizeHelper = new SizeHelper.SizeHelper();
+    this.format = IconMap.IconMap.DEFAULT_ICON;
+    this.status = undefined;
+    this.size = 's';
+    this.inline = false;
+    this.reference = undefined;
+  }
+  sizeChange(newValue) {
+    this.sizeHelper.validateSize(this.supportedSizes, newValue);
+  }
+  statusChange(newValue) {
+    this.statusHelper.validateStatus(this.supportedStatuses, newValue);
+  }
+  componentWillLoad() {
+    this.assetsFolder = AssetsFolderHelper.getAssetsFolder(this.el);
+    this.iconMap = new IconMap.IconMap(this.assetsFolder);
+    this.sizeHelper.validateSize(this.supportedSizes, this.size);
+    this.statusChange(this.status);
+  }
+  render() {
+    var _a;
+    const iconPath = this.iconMap.getIconPath((_a = this.format) === null || _a === void 0 ? void 0 : _a.trim());
+    return index.h(index.Host, null, index.h("svg", { class: "soul-file-icon__icon" }, index.h("use", { href: iconPath })), utils.isDefined(this.status) && this.statusHelper.isValidStatus(this.supportedStatuses, this.status) ? index.h("div", { class: "soul-file-icon__indicator" }, index.h("soul-indicator", { type: this.status, border: true })) : '', this.reference ? index.h("div", { class: "soul-file-icon__reference" }) : '');
+  }
+  get el() { return index.getElement(this); }
+  static get watchers() { return {
+    "size": ["sizeChange"],
+    "status": ["statusChange"]
+  }; }
+};
+SoulFileIcon.style = soulFileIconCss;
+
+exports.soul_file_icon = SoulFileIcon;
+
+//# sourceMappingURL=soul-file-icon.cjs.entry.js.map

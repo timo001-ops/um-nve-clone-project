@@ -1,0 +1,1 @@
+{"version":3,"file":"PopoverElement.js","sourceRoot":"","sources":["../../../../../../src/types/PopoverElement.ts"],"names":[],"mappings":"","sourcesContent":["export interface HTMLPopoverElement extends HTMLElement {\n  showPopover: () => void;\n  hidePopover: () => void;\n  togglePopover: () => void;\n}\n"]}

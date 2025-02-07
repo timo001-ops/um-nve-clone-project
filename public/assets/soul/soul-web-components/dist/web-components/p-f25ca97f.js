@@ -1,0 +1,2 @@
+function t(t){const e=getComputedStyle(t).getPropertyValue("--soul-assets-folder");if(e.trim().indexOf("^")==0){return e.trim().replace(/\^/,"")}return e}export{t as g};
+//# sourceMappingURL=p-f25ca97f.js.map

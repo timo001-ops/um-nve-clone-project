@@ -1,0 +1,38 @@
+import { ComponentDidLoad, EventEmitter } from "../../stencil-public-runtime";
+export declare class SoulModal implements ComponentDidLoad {
+  closeButton: boolean;
+  closeWithEsc: boolean;
+  heading: string;
+  label: string;
+  open: boolean;
+  position: 'center' | 'side-right' | 'side-left';
+  size: 's' | 'm' | 'l' | 'xl';
+  type: 'neutral' | 'info' | 'warning' | 'critical';
+  soulClose: EventEmitter<void>;
+  host: HTMLElement;
+  private readonly NO_FOOTER_CLASS;
+  private readonly CLOSING_ANIMATION_CLASS;
+  private dialog;
+  private typesWithIndicator;
+  private supportedTypes;
+  private supportedSizes;
+  private supportedPositions;
+  private sizeHelper;
+  private typeHelper;
+  private positionHelper;
+  show(): Promise<void>;
+  close(): Promise<void>;
+  componentDidLoad(): void;
+  render(): any;
+  private validateType;
+  private validateSize;
+  private validatePosition;
+  private toggleDialog;
+  private addCancelListener;
+  private isTypeWithIndicator;
+  private isSizeSupported;
+  private isPositionSupported;
+  private emitCloseEvent;
+  private animateClose;
+  private checkEmtpyButtons;
+}

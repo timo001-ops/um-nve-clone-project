@@ -1,0 +1,483 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+const index = require('./index-a33e737d.js');
+const floatingUi_dom_esm = require('./floating-ui.dom.esm-0c3f6302.js');
+const utils = require('./utils-b4bbc9bf.js');
+const Keymap = require('./Keymap-6a2367a2.js');
+const SelectHelper = require('./SelectHelper-8adc5ea5.js');
+
+class PopoverHelper {
+  constructor() {
+    this.popoverSupported = true;
+    this.DISTANCE_REFERENCE_FLOATING = 4;
+  }
+  connect(reference, floating, maxHeight) {
+    this.setPopoverSupport(floating);
+    if (!this.popoverSupported && this.isPopoverInModal(floating)) {
+      floating.classList.add('_popover-in-modal');
+    }
+    const callback = () => {
+      floatingUi_dom_esm.computePosition(reference, floating, {
+        strategy: 'fixed',
+        placement: 'bottom',
+        middleware: [
+          floatingUi_dom_esm.offset(this.DISTANCE_REFERENCE_FLOATING),
+          floatingUi_dom_esm.flip({
+            fallbackPlacements: ['top', 'bottom'],
+            fallbackStrategy: 'initialPlacement',
+            boundary: document.body,
+            padding: 5
+          }),
+          floatingUi_dom_esm.size({
+            apply: ({ rects, elements, availableHeight }) => {
+              Object.assign(elements.floating.style, {
+                width: `${rects.reference.width}px`,
+                maxHeight: `min(${availableHeight}px, ${maxHeight})`
+              });
+            },
+            padding: 5,
+            boundary: document.body
+          })
+        ]
+      }).then((computedPosition) => {
+        Object.assign(floating.style, {
+          top: `${computedPosition.y}px`,
+          left: `${computedPosition.x}px`
+        });
+      });
+    };
+    this.stopAutoUpdate = floatingUi_dom_esm.autoUpdate(reference, floating, callback);
+  }
+  disconnect() {
+    this.stopAutoUpdate && this.stopAutoUpdate();
+  }
+  setPopoverSupport(element) {
+    this.popoverSupported = this.isPopoverSupported(element);
+  }
+  isPopoverInModal(element) {
+    return utils.isDefined(this.getModalParent(element));
+  }
+  isPopoverSupported(element) {
+    return ((typeof HTMLElement !== 'undefined' &&
+      typeof HTMLElement.prototype === 'object' &&
+      'popover' in HTMLElement.prototype) && (!element.classList.contains(':popover-open')));
+  }
+  getModalParent(reference) {
+    return reference.getRootNode().host.closest('soul-modal');
+  }
+}
+
+const soulSelectCss = ":root{--soul-assets-folder:./assets/}@font-face{font-family:\"soul-sans\";src:url(\"./assets//soul-roman.woff2\") format(\"woff2\");font-weight:100 700;font-display:swap}@font-face{font-family:\"soul-mono\";src:url(\"./assets//soul-mono.woff2\") format(\"woff2\");font-display:swap}@font-face{font-family:\"soul\";src:url(\"./assets//soul-icons.woff2\") format(\"woff2\");font-display:block}*,*:before,*:after{box-sizing:border-box}h1,h2,h3,h4,h5,h6,p,blockquote,pre,dl,dd,ol,ul,form,fieldset,legend,table,th,td,caption,hr,dialog{margin:0;padding:0}a{color:inherit;cursor:pointer;text-decoration:none}dialog{color:inherit}fieldset{border:none;position:relative}abbr,u,ins{text-decoration:none}ins{border-bottom:1px solid}img{font-style:italic}label,button,select,option{cursor:pointer;font-family:inherit}button{color:var(--soul-theme-color-text-on-light)}textarea:active,textarea:focus{cursor:text;outline:none}main{display:block}.soul-label{display:block;font-size:var(--soul-font-size-s);line-height:var(--soul-line-height-s);transition-property:color;transition-duration:300ms;transition-timing-function:ease;color:var(--soul-theme-color-text-on-light)}.soul-label--inline{display:inline-block}.soul-label--input{font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:450;font-style:normal}.soul-label--reduced{color:var(--soul-theme-color-neutral-500)}.soul-label--key{font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:320;font-style:normal;color:var(--soul-theme-color-neutral-500)}.soul-label--stat{font-size:var(--soul-font-size-l);line-height:var(--soul-line-height-l)}.soul-label--strong{font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:500;font-style:normal;color:var(--soul-theme-color-text-bold-on-light)}.soul-label--mono{font-family:\"soul-mono\", \"Menlo\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", Courier, monospace}.soul-label--micro{font-size:var(--soul-font-size-xs);line-height:var(--soul-line-height-xs)}.soul-label--warning{color:hsl(43, 77%, 27%)}.soul-label--negative{color:hsl(0, 72%, 38%)}.soul-label--positive{color:hsl(125, 56%, 29%)}.soul-label--data-type{font-family:\"soul-mono\", \"Menlo\", \"DejaVu Sans Mono\", \"Bitstream Vera Sans Mono\", Courier, monospace;color:hsl(262, 48%, 46%);font-size:var(--soul-font-size-xs);line-height:var(--soul-line-height-xs)}.a-badge{display:inline-block;text-align:center;padding:0 0.5rem 0 0.5rem;border-radius:0.75rem;border-width:1px;border-style:solid;border-color:hsla(0, 0%, 100%, 0);font-size:var(--soul-font-size-xs);line-height:var(--soul-line-height-xs);font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:400;font-style:normal}.a-badge--default{background-color:var(--soul-theme-color-neutral-100);border-color:var(--soul-theme-color-neutral-300);color:var(--soul-theme-color-neutral-700)}.a-badge--warning{background-color:hsl(45, 100%, 96%);border-color:hsl(45, 86%, 81%);color:hsl(43, 77%, 27%)}.a-badge--negative{background-color:hsl(0, 89%, 96%);border-color:hsl(0, 82%, 89%);color:hsl(0, 72%, 38%)}.a-badge--positive{background-color:hsl(130, 40%, 92%);border-color:hsl(126, 49%, 84%);color:hsl(125, 56%, 29%)}.a-badge--primary{background-color:var(--soul-theme-color-primary-50);border-color:var(--soul-theme-color-primary-100);color:var(--soul-theme-color-primary-600)}.a-badge--outline{background-color:hsla(0, 0%, 100%, 0)}.a-badge--2-xs{font-size:var(--soul-font-size-2-xs);line-height:var(--soul-line-height-2-xs)}.a-badge--xs{font-size:var(--soul-font-size-xs);line-height:var(--soul-line-height-xs)}.a-badge--s{font-size:var(--soul-font-size-s);line-height:var(--soul-line-height-s)}.a-badge--m{font-size:var(--soul-font-size-m);line-height:var(--soul-line-height-m)}.a-badge--l{font-size:var(--soul-font-size-l);line-height:var(--soul-line-height-l)}.a-badge--xl{font-size:var(--soul-font-size-xl);line-height:var(--soul-line-height-xl)}.a-badge--2-xl{font-size:var(--soul-font-size-2-xl);line-height:var(--soul-line-height-2-xl)}.a-badge--3-xl{font-size:var(--soul-font-size-3-xl);line-height:var(--soul-line-height-3-xl)}.soul-indicator{display:block}.soul-indicator--s{width:var(--soul-line-height-s);height:var(--soul-line-height-s)}.soul-indicator--m{width:var(--soul-line-height-m);height:var(--soul-line-height-m)}.soul-indicator--positive{background-image:url('data:image/svg+xml;utf-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(122, 39%, 41%)\" stroke=\"hsl(122, 39%, 41%)\" stroke-width=\"1.5\"/><path d=\"M9.97653 17.4225L5 12.3991L6.40845 10.9906L9.97653 14.6056L17.5822 7L18.9906 8.40845L9.97653 17.4225Z\" fill=\"white\"/></g></svg>')}.soul-indicator--positive.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(122, 39%, 41%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M9.97653 17.4225L5 12.3991L6.40845 10.9906L9.97653 14.6056L17.5822 7L18.9906 8.40845L9.97653 17.4225Z\" fill=\"white\"/></g></svg>')}.soul-indicator--warning{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(42, 78%, 60%)\" stroke=\"hsl(42, 78%, 60%)\" stroke-width=\"1.5\"/><path d=\"M12 5L5 17.0909H19L12 5ZM12.7382 15.8182H11.2555V14.2973H12.7382V15.8182ZM11.2555 12.8464V8.39182H12.7382V12.8464H11.2555Z\" fill=\"white\"/></g></svg>')}.soul-indicator--warning.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(42, 78%, 60%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M12 5L5 17.0909H19L12 5ZM12.7382 15.8182H11.2555V14.2973H12.7382V15.8182ZM11.2555 12.8464V8.39182H12.7382V12.8464H11.2555Z\" fill=\"white\"/></g></svg>')}.soul-indicator--critical{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(0, 67%, 44%)\" stroke=\"hsl(0, 67%, 44%)\" stroke-width=\"1.5\"/><path d=\"M10.5 5H13.5L13.5 13.4H10.5L10.5 5ZM10.5 16.2H13.5V19H10.5V16.2Z\" fill=\"white\"/></g></svg>')}.soul-indicator--critical.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(0, 67%, 44%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M10.5 5H13.5L13.5 13.4H10.5L10.5 5ZM10.5 16.2H13.5V19H10.5V16.2Z\" fill=\"white\"/></g></svg>')}.soul-indicator--not-allowed{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(42, 78%, 60%)\" stroke=\"hsl(42, 78%, 60%)\" stroke-width=\"1.5\"/><path d=\"M12 5C10.072 5 8.42332 5.68466 7.05399 7.05399C5.68466 8.42332 5 10.072 5 12C5 13.928 5.68466 15.5767 7.05399 16.946C8.42332 18.3153 10.072 19 12 19C13.928 19 15.5767 18.3153 16.946 16.946C18.3153 15.5767 19 13.928 19 12C19 10.072 18.3153 8.42332 16.946 7.05399C15.5767 5.68466 13.928 5 12 5ZM12 17.6197C10.4664 17.6197 9.14632 17.0665 8.03991 15.9601C6.93349 14.8537 6.38028 13.5336 6.38028 12C6.38028 10.7293 6.7856 9.57903 7.59624 8.5493L15.4507 16.4038C14.421 17.2144 13.2707 17.6197 12 17.6197ZM16.4038 15.4507L8.5493 7.59624C9.57903 6.7856 10.7293 6.38028 12 6.38028C13.5336 6.38028 14.8537 6.93349 15.9601 8.03991C17.0665 9.14632 17.6197 10.4664 17.6197 12C17.6197 13.2707 17.2144 14.421 16.4038 15.4507Z\" fill=\"white\"/></g></svg>')}.soul-indicator--not-allowed.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(42, 78%, 60%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M12 5C10.072 5 8.42332 5.68466 7.05399 7.05399C5.68466 8.42332 5 10.072 5 12C5 13.928 5.68466 15.5767 7.05399 16.946C8.42332 18.3153 10.072 19 12 19C13.928 19 15.5767 18.3153 16.946 16.946C18.3153 15.5767 19 13.928 19 12C19 10.072 18.3153 8.42332 16.946 7.05399C15.5767 5.68466 13.928 5 12 5ZM12 17.6197C10.4664 17.6197 9.14632 17.0665 8.03991 15.9601C6.93349 14.8537 6.38028 13.5336 6.38028 12C6.38028 10.7293 6.7856 9.57903 7.59624 8.5493L15.4507 16.4038C14.421 17.2144 13.2707 17.6197 12 17.6197ZM16.4038 15.4507L8.5493 7.59624C9.57903 6.7856 10.7293 6.38028 12 6.38028C13.5336 6.38028 14.8537 6.93349 15.9601 8.03991C17.0665 9.14632 17.6197 10.4664 17.6197 12C17.6197 13.2707 17.2144 14.421 16.4038 15.4507Z\" fill=\"white\"/></g></svg>')}.soul-indicator--locked{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(211, 12%, 43%)\" stroke=\"hsl(211, 12%, 43%)\" stroke-width=\"1.5\"/><path d=\"M17.1938 11.3905H16.6282V9.35844C16.6282 6.95519 14.626 5 12.1649 5C9.7038 5 7.70159 6.95519 7.70159 9.35844V11.3905H7.35173C6.88132 11.3905 6.5 11.7718 6.5 12.2422V18.1483C6.5 18.6187 6.88132 19 7.35173 19H17.1938C17.6642 19 18.0456 18.6187 18.0456 18.1483V12.2422C18.0456 11.7719 17.6642 11.3905 17.1938 11.3905ZM9.52794 9.35844C9.52794 7.94649 10.7109 6.79781 12.1649 6.79781C13.6189 6.79781 14.8018 7.94649 14.8018 9.35844V11.3905H9.52794V9.35844Z\" fill=\"white\"/></g></svg>')}.soul-indicator--locked.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(211, 12%, 43%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M17.1938 11.3905H16.6282V9.35844C16.6282 6.95519 14.626 5 12.1649 5C9.7038 5 7.70159 6.95519 7.70159 9.35844V11.3905H7.35173C6.88132 11.3905 6.5 11.7718 6.5 12.2422V18.1483C6.5 18.6187 6.88132 19 7.35173 19H17.1938C17.6642 19 18.0456 18.6187 18.0456 18.1483V12.2422C18.0456 11.7719 17.6642 11.3905 17.1938 11.3905ZM9.52794 9.35844C9.52794 7.94649 10.7109 6.79781 12.1649 6.79781C13.6189 6.79781 14.8018 7.94649 14.8018 9.35844V11.3905H9.52794V9.35844Z\" fill=\"white\"/></g></svg>')}.soul-indicator--info{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(205, 76%, 39%)\" stroke=\"hsl(205, 76%, 39%)\" stroke-width=\"1.5\"/><path d=\"M13.5 19H10.5V10.6H13.5V19ZM13.5 7.8H10.5V5H13.5V7.8Z\" fill=\"white\"/></g></svg>')}.soul-indicator--info.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(205, 76%, 39%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M13.5 19H10.5V10.6H13.5V19ZM13.5 7.8H10.5V5H13.5V7.8Z\" fill=\"white\"/></g></svg>')}.soul-indicator--help{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(205, 76%, 39%)\" stroke=\"hsl(205, 76%, 39%)\" stroke-width=\"1.5\"/><path d=\"M13.25 19H11.15V17H13.25V19ZM15.4235 11.25L14.4785 12.17C13.7225 12.9 13.25 13.5 13.25 15H11.15V14.5C11.15 13.4 11.6225 12.4 12.3785 11.67L13.6805 10.41C14.069 10.05 14.3 9.55 14.3 9C14.3 7.9 13.355 7 12.2 7C11.045 7 10.1 7.9 10.1 9H8C8 6.79 9.8795 5 12.2 5C14.5205 5 16.4 6.79 16.4 9C16.4 9.88 16.022 10.68 15.4235 11.25Z\" fill=\"white\"/></g></svg>')}.soul-indicator--help.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(205, 76%, 39%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M13.25 19H11.15V17H13.25V19ZM15.4235 11.25L14.4785 12.17C13.7225 12.9 13.25 13.5 13.25 15H11.15V14.5C11.15 13.4 11.6225 12.4 12.3785 11.67L13.6805 10.41C14.069 10.05 14.3 9.55 14.3 9C14.3 7.9 13.355 7 12.2 7C11.045 7 10.1 7.9 10.1 9H8C8 6.79 9.8795 5 12.2 5C14.5205 5 16.4 6.79 16.4 9C16.4 9.88 16.022 10.68 15.4235 11.25Z\" fill=\"white\"/></g></svg>')}.soul-indicator--waiting{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(211, 12%, 43%)\" stroke=\"hsl(211, 12%, 43%)\" stroke-width=\"1.5\"/><path d=\"M8 5V9.2L10.8 12L8 14.8V19H16.4V14.8L13.6 12L16.4 9.2V5H8ZM15 15.36V17.5705H9.4V15.36L12.2 12.56L15 15.36Z\" fill=\"white\"/></g></svg>')}.soul-indicator--waiting.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(211, 12%, 43%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M8 5V9.2L10.8 12L8 14.8V19H16.4V14.8L13.6 12L16.4 9.2V5H8ZM15 15.36V17.5705H9.4V15.36L12.2 12.56L15 15.36Z\" fill=\"white\"/></g></svg>')}.soul-indicator--experimental{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(294, 48%, 46%)\" stroke=\"hsl(294, 48%, 46%)\" stroke-width=\"1.5\"/><path d=\"M18.3368 16.7L13.6243 10.4194V7.03125L14.7212 5.65812C14.9325 5.39 14.7456 5 14.4043 5H9.59435C9.2531 5 9.06622 5.39 9.27747 5.65812L10.3743 7.03125V10.4194L5.66185 16.7C5.26372 17.2362 5.6456 18 6.31185 18H17.6868C18.3531 18 18.735 17.2362 18.3368 16.7Z\" fill=\"white\"/></g></svg>')}.soul-indicator--experimental.soul-indicator--with-border{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(294, 48%, 46%)\" stroke=\"hsl(0, 0%, 100%)\" stroke-width=\"1.5\"/><path d=\"M18.3368 16.7L13.6243 10.4194V7.03125L14.7212 5.65812C14.9325 5.39 14.7456 5 14.4043 5H9.59435C9.2531 5 9.06622 5.39 9.27747 5.65812L10.3743 7.03125V10.4194L5.66185 16.7C5.26372 17.2362 5.6456 18 6.31185 18H17.6868C18.3531 18 18.735 17.2362 18.3368 16.7Z\" fill=\"white\"/></g></svg>')}.soul-tooltip{position:relative;overflow:visible}@media (hover: hover) and (pointer: fine){.soul-tooltip:hover .soul-tooltip__tip{display:block}}.soul-tooltip:active .soul-tooltip__tip,.soul-tooltip:focus .soul-tooltip__tip,.soul-tooltip:focus-within .soul-tooltip__tip{display:block}.soul-tooltip__tip{pointer-events:none;display:none;position:absolute;z-index:8000;padding:0.125rem 0.25rem;font-size:var(--soul-font-size-s);white-space:nowrap;background-color:var(--soul-theme-color-neutral-800);color:hsl(0, 0%, 100%);border-radius:0.25rem}.soul-tooltip--warning .soul-tooltip__tip{background-color:hsl(42, 78%, 60%);color:var(--soul-theme-color-text-on-light)}.soul-tooltip--error .soul-tooltip__tip{background-color:hsl(0, 67%, 44%);color:hsl(0, 0%, 100%)}.soul-tooltip--top .soul-tooltip__tip{top:calc(0.25rem * -1);left:50%;transform:translate(-50%, -100%)}.soul-tooltip--top-left .soul-tooltip__tip{top:calc(0.25rem * -1);left:0;transform:translate(0, -100%)}.soul-tooltip--top-right .soul-tooltip__tip{top:calc(0.25rem * -1);right:0;transform:translate(0, -100%)}.soul-tooltip--bottom .soul-tooltip__tip{bottom:calc(0.25rem * -1);left:50%;transform:translate(-50%, 100%)}.soul-tooltip--bottom-left .soul-tooltip__tip{bottom:calc(0.25rem * -1);left:0;transform:translate(0%, 100%)}.soul-tooltip--bottom-right .soul-tooltip__tip{bottom:calc(0.25rem * -1);right:0;transform:translate(0%, 100%)}.soul-tooltip--right .soul-tooltip__tip{right:calc(0.25rem * -1);top:50%;transform:translate(100%, -50%)}.soul-tooltip--left .soul-tooltip__tip{left:calc(0.25rem * -1);top:50%;transform:translate(-100%, -50%)}:host{display:block;--soul-select-input-width:1fr}:host([input-only]:not([input-only=false])) .soul-select__label,:host([input-only]:not([input-only=false])) .soul-select__status-message,:host([input-only]:not([input-only=false])) .soul-select__help,:host([input-only]:not([input-only=false])) .soul-select__action{display:none}.soul-select{display:grid;grid-template-columns:var(--soul-select-input-width) auto;grid-template-rows:auto auto auto auto;grid-template-areas:\"label label\" \"input action\" \"status status\" \"help help\"}.soul-select__label{grid-area:label;font-size:var(--soul-font-size-s);line-height:var(--soul-line-height-s);transition-property:color;transition-duration:300ms;transition-timing-function:ease;font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:450;font-style:normal}.soul-select__additional-label{padding:0 0 0 0.125rem}.soul-select__additional-label,.soul-select__help{font-size:var(--soul-font-size-s);line-height:var(--soul-line-height-s);transition-property:color;transition-duration:300ms;transition-timing-function:ease;font-family:\"soul-sans\", \"Helvetica Neue\", Arial, sans-serif;font-weight:400;font-style:normal;color:var(--soul-theme-color-neutral-500)}.soul-select__control{grid-area:input;position:relative;overflow:hidden}.soul-select__input-icon{display:flex;align-items:center;position:absolute;right:0.5rem;top:0;bottom:0;margin:auto 0;height:100%;pointer-events:none}input.soul-select__input{display:block;font-size:var(--soul-font-size-s);line-height:var(--soul-line-height-s);font-family:inherit;width:100%;padding:0.5rem;border-top-style:solid;border-bottom-style:solid;border-left-style:solid;border-right-style:solid;border-width:1px;border-color:var(--soul-theme-color-neutral-300);border-radius:0.125rem;background-color:hsl(0, 0%, 100%);color:var(--soul-theme-color-text-on-light);outline:none;margin:0;transition-property:border-color, padding, box-shadow;transition-duration:300ms;transition-timing-function:ease;position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;padding-right:1.5rem}@media (hover: hover) and (pointer: fine){input.soul-select__input:hover:not(:disabled):not([contenteditable=false]){box-shadow:inset 0px 0px 0px 1px var(--soul-theme-color-primary-200)}}input.soul-select__input:focus:not(:disabled):not([contenteditable=false]){border-color:var(--soul-theme-color-base);box-shadow:inset 0px 0px 0px 2px var(--soul-theme-color-primary-200)}input.soul-select__input:disabled,input.soul-select__input[contenteditable=false]{background-color:var(--soul-theme-color-neutral-200);color:var(--soul-theme-color-neutral-400);cursor:not-allowed}input.soul-select__input[readonly]{cursor:pointer}input.soul-select__input[disabled]{cursor:not-allowed}input.soul-select__input:disabled+.soul-select__selection{background-color:var(--soul-theme-color-neutral-200);color:var(--soul-theme-color-neutral-400)}input:valid.soul-select__input:not([readonly]):not([disabled])+.soul-select__selection,input:valid.soul-select__input:not([readonly]):not([disabled])~.soul-select__placeholder{visibility:hidden}.soul-select input.soul-select__input{background-color:hsla(0, 0%, 100%, 0)}.soul-select__selection{font-size:var(--soul-font-size-s);line-height:var(--soul-line-height-s);transition-property:opacity, padding, border, box-shadow;transition-duration:300ms;transition-timing-function:ease;border-top-style:solid;border-bottom-style:solid;border-left-style:solid;border-right-style:solid;border-width:1px;border-color:var(--soul-theme-color-neutral-300);border-radius:0.125rem;min-height:2rem;padding-right:1.5rem;pointer-events:none;display:none}.soul-select__placeholder{pointer-events:none;display:flex;align-items:center;padding:0.5rem}.soul-select__placeholder,.soul-select__selection{background-color:hsl(0, 0%, 100%)}.soul-select__status-message{grid-area:status}.soul-select__help{grid-area:help}.soul-select__status-message,.soul-select__help{padding:0.25rem 0 0 0}.soul-select__selection:not(:empty){display:block}.soul-select__selection:not(:empty)+.soul-select__placeholder{display:none}.soul-select__options{margin:0;padding:0;background-color:hsl(0, 0%, 100%);border-width:1px;border-style:solid;border-color:var(--soul-theme-color-neutral-200);border-radius:0.125rem}.soul-select__options{box-shadow:0 1rem 2rem hsla(210, 24%, 16%, 0.08), 0 0.25rem 0.5rem hsla(210, 24%, 16%, 0.1)}.soul-select__options ::slotted(soul-text-option),.soul-select__options ::slotted(soul-avatar-option){padding:0.125rem 0.25rem}.soul-select__options ::slotted(soul-text-option:first-of-type),.soul-select__options ::slotted(soul-avatar-option:first-of-type){padding-top:0.25rem}.soul-select__options ::slotted(soul-text-option:last-of-type),.soul-select__options ::slotted(soul-avatar-option:last-of-type){padding-bottom:0.25rem}.soul-select__options ::slotted(soul-option-group){padding:0.5rem 0 0 0}.soul-select__options ::slotted(soul-option-group:first-of-type){padding-top:0.5rem}.soul-select__options ::slotted(soul-option-group:last-of-type){padding-bottom:0.125rem}.soul-select__option-clone{position:fixed;top:100%;left:-9999px;top:-9999px}.soul-select--warning .soul-select__control:after,.soul-select--critical .soul-select__control:after{content:\"\";position:absolute;right:1.5rem;top:calc(50% - (var(--soul-line-height-s) / 2));pointer-events:none;width:var(--soul-line-height-s);height:var(--soul-line-height-s)}.soul-select--warning .soul-select__input,.soul-select--warning .soul-select__selection,.soul-select--critical .soul-select__input,.soul-select--critical .soul-select__selection{padding-right:3rem}.soul-select--warning .soul-select__control:after{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(42, 78%, 60%)\" stroke=\"hsl(42, 78%, 60%)\" stroke-width=\"1.5\"/><path d=\"M12 5L5 17.0909H19L12 5ZM12.7382 15.8182H11.2555V14.2973H12.7382V15.8182ZM11.2555 12.8464V8.39182H12.7382V12.8464H11.2555Z\" fill=\"white\"/></g></svg>')}.soul-select--warning .soul-select__input{border-color:hsl(42, 78%, 60%)}@media (hover: hover) and (pointer: fine){.soul-select--warning .soul-select__input:not(:disabled):hover:not([contenteditable=false]){box-shadow:inset 0px 0px 0px 1px hsl(45, 86%, 81%)}}.soul-select--warning .soul-select__input:not(:disabled):focus:not(:disabled):not([contenteditable=false]){border-color:hsl(42, 78%, 60%);box-shadow:inset 0px 0px 0px 2px hsl(45, 86%, 81%)}.soul-select--warning .soul-select__status-message{display:block;color:hsl(43, 77%, 27%)}.soul-select--critical .soul-select__control:after{background-image:url('data:image/svg+xml;utf-8,<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g><path d=\"M23.25 12C23.25 18.2132 18.2132 23.25 12 23.25C5.7868 23.25 0.75 18.2132 0.75 12C0.75 5.7868 5.7868 0.75 12 0.75C18.2132 0.75 23.25 5.7868 23.25 12Z\" fill=\"hsl(0, 67%, 44%)\" stroke=\"hsl(0, 67%, 44%)\" stroke-width=\"1.5\"/><path d=\"M10.5 5H13.5L13.5 13.4H10.5L10.5 5ZM10.5 16.2H13.5V19H10.5V16.2Z\" fill=\"white\"/></g></svg>')}.soul-select--critical .soul-select__input{border-color:hsl(0, 67%, 44%)}@media (hover: hover) and (pointer: fine){.soul-select--critical .soul-select__input:hover:not(:disabled):not([contenteditable=false]){box-shadow:inset 0px 0px 0px 1px hsl(0, 77%, 78%)}}.soul-select--critical .soul-select__input:focus:not(:disabled):not([contenteditable=false]){border-color:hsl(0, 67%, 44%);box-shadow:inset 0px 0px 0px 2px hsl(0, 77%, 78%)}.soul-select--critical .soul-select__status-message{display:block;color:hsl(0, 72%, 38%)}.soul-select__action{grid-area:action;display:var(--_soul-select-action-display, none);align-self:center;padding:0 0 0 0.25rem}._popover-in-modal.\\:popover-open{position:static}.soul-select__options-message{padding:1rem 0 1rem 0;text-align:center}";
+
+const SoulSelect = class {
+  constructor(hostRef) {
+    index.registerInstance(this, hostRef);
+    this.soulOptionSelect = index.createEvent(this, "soulOptionSelect", 7);
+    this.soulSearch = index.createEvent(this, "soulSearch", 7);
+    this.supportedStatuses = ['warning', 'critical'];
+    this.highlightedIndex = -1;
+    this.isPopoverVisible = false;
+    this.instanceId = `js-soul-select-${++selectId}-input`;
+    this.popoverHelper = new PopoverHelper();
+    this.additionalLabel = undefined;
+    this.disabled = false;
+    this.disableSpaces = false;
+    this.helpText = undefined;
+    this.inputOnly = false;
+    this.label = undefined;
+    this.maxHeight = '18rem';
+    this.noOptionsMessage = 'No options';
+    this.placeholder = undefined;
+    this.searchable = false;
+    this.stateless = false;
+    this.status = undefined;
+    this.statusMessage = undefined;
+    this.tooltipPosition = 'top-start';
+    this.searchFunction = undefined;
+    this.showEmptyOptionMessage = false;
+    this.optionHeightObserver = new ResizeObserver(this.resizePlaceholderElement.bind(this));
+  }
+  componentDidRender() {
+    this.optionListElement.addEventListener('toggle', (event) => {
+      if (event.newState === 'closed') {
+        this.isPopoverVisible = false;
+        this.popoverHelper.disconnect();
+        this.resetHighlight();
+      }
+    });
+    this.optionHeightObserver.disconnect();
+    this.optionHeightObserver.observe(this.optionCloneElement);
+    this.setPlaceholderElementHeight();
+    this.setActionSlotVisibility();
+    this.setTooltipTriggerElement();
+  }
+  disconnectedCallback() {
+    this.optionHeightObserver.disconnect();
+    this.popoverHelper.disconnect();
+  }
+  async onOptionChange(event) {
+    await this.updateSelectedOptionClone(event.detail);
+  }
+  onOptionHover(event) {
+    this.resetHighlight();
+    event.detail.highlighted = true;
+    this.highlightedIndex = this.getOptions().findIndex(option => option.highlighted);
+  }
+  async onSoulClick(event) {
+    await this.selectOption(event.detail);
+  }
+  async onOptionSelectChange(event) {
+    const changedOption = event.detail;
+    this.doOnSelectChange(changedOption, changedOption.selected, false);
+  }
+  async doOnSelectChange(option, isSelected, bubbling) {
+    if (isSelected) {
+      if (this.stateless) {
+        option.dataSelected = false;
+      }
+      else {
+        this.deselectOtherOptions(option);
+        await this.updateSelectedOptionClone(option);
+      }
+      if (bubbling) {
+        this.soulOptionSelect.emit(option.value);
+      }
+    }
+    else if (this.areAllOptionsDeselected() && !this.stateless) {
+      this.emptyElement(this.selectionElement);
+      if (bubbling) {
+        this.soulOptionSelect.emit(null);
+      }
+    }
+  }
+  onDisabledChange() {
+    const selectedElements = this.getOptions().filter(option => option.dataSelected);
+    selectedElements.forEach(selectedElement => this.updateSelectedOptionClone(selectedElement));
+  }
+  async onKeyUp(keyboardEvent) {
+    if (this.searchable && !Keymap.isKeyboardKeyAction(keyboardEvent)) {
+      await this.setFilterDataAttributes(this.inputElement.value.trim());
+      const matchingOptions = this.getMatchingOptions();
+      this.soulSearch.emit({ searchTerm: this.inputElement.value, matches: matchingOptions.length, matchingOptions: matchingOptions });
+      if (!this.isPopoverVisible) {
+        this.togglePopover();
+      }
+      this.highlightNotFilteredOption();
+      this.showEmptyOptionMessage = this.getOptions().every(option => option.hasAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE));
+    }
+  }
+  render() {
+    return (index.h(index.Host, null, index.h("div", { class: {
+        'soul-select': true,
+        'soul-select--critical': this.status === 'critical',
+        'soul-select--warning': this.status === 'warning'
+      }, ref: el => this.selectElement = el }, !this.inputOnly && (utils.isNotEmpty(this.label) || utils.isNotEmpty(this.additionalLabel)) ?
+      index.h("div", { class: "soul-select__label" }, index.h("label", { htmlFor: this.instanceId }, this.label, utils.isNotEmpty(this.additionalLabel) ?
+        index.h("span", { class: "soul-select__additional-label" }, this.additionalLabel) : '')) : '', index.h("div", { class: "soul-select__control" }, this.renderTooltip(), index.h("input", { disabled: this.disabled, onKeyDown: this.onKeyDown.bind(this), onKeyUp: this.onKeyUp.bind(this), onClick: this.togglePopover.bind(this), id: this.instanceId, type: "text", spellcheck: false, class: "soul-select__input", readonly: !this.searchable, pattern: ".+", required: true, ref: el => this.inputElement = el }), !this.stateless ? index.h("div", { class: "soul-select__selection", ref: el => this.selectionElement = el }) : '', index.h("div", { class: "soul-select__placeholder", ref: el => this.placeholderElement = el }, utils.isNotEmpty(this.placeholder) ?
+      index.h("span", { class: "soul-label soul-label--reduced" }, this.placeholder) : ''), index.h("div", { class: "soul-select__input-icon" }, index.h("soul-icon", { name: "down", size: "s", color: "reduced" }))), this.shouldRenderStatusMessage ?
+      index.h("div", { class: "soul-select__status-message" }, this.statusMessage) : '', !this.inputOnly && utils.isNotEmpty(this.helpText) ?
+      index.h("div", { class: "soul-select__help" }, this.helpText) : '', index.h("div", { class: "soul-select__option-clone", ref: el => this.optionCloneElement = el }), index.h("div", { class: "soul-select__action" }, index.h("slot", { ref: el => this.actionElement = el, name: "action" }))), index.h("div", Object.assign({ class: "soul-select__options" }, { 'popover': '' }, { ref: el => this.optionListElement = el }), this.showEmptyOptionMessage ? index.h("div", { class: "soul-select__options-message" }, index.h("span", { class: "soul-label soul-label--reduced" }, this.noOptionsMessage)) : '', index.h("slot", { ref: el => this.optionsElement = el, onSlotchange: this.setPlaceholderElementHeight.bind(this) }))));
+  }
+  get shouldRenderTooltip() {
+    return this.inputOnly && (this.shouldRenderStatusMessage || utils.isNotEmpty(this.helpText));
+  }
+  get shouldRenderStatusMessage() {
+    return this.isStatusValid && utils.isNotEmpty(this.statusMessage);
+  }
+  get isStatusValid() {
+    return this.supportedStatuses.includes(this.status);
+  }
+  renderTooltip() {
+    return this.shouldRenderTooltip ? (index.h("soul-tooltip", { text: this.shouldRenderStatusMessage ? this.statusMessage : this.helpText, status: this.status ? this.status : undefined, position: this.tooltipPosition, ref: el => this.tooltipElement = el })) : '';
+  }
+  getMatchingOptions() {
+    return this.getOptions().filter(option => !this.isOptionFiltered(option) && !option.nonFilterable);
+  }
+  highlightNotFilteredOption() {
+    const highlightedOption = this.getOptions()[this.highlightedIndex];
+    if (!this.isOptionUsable(highlightedOption)) {
+      this.highlightFirstNotFilteredOption();
+    }
+  }
+  isOptionFiltered(option) {
+    return option.hasAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE);
+  }
+  highlightFirstNotFilteredOption() {
+    this.removeCurrentOptionHighlight();
+    const firstVisibleOptionIndex = this.getOptions().findIndex((option) => this.isOptionUsable(option));
+    if (firstVisibleOptionIndex !== -1) {
+      this.highlightOptionByIndex(firstVisibleOptionIndex);
+    }
+  }
+  async setFilterDataAttributes(term) {
+    const options = this.getOptions().filter(option => !option.nonFilterable);
+    const allMatchPromises = [];
+    for (const soulOption of options) {
+      if (this.isOptionHidden(soulOption)) {
+        soulOption.setAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE, 'true');
+      }
+      else if (this.searchFunction && term !== '') {
+        this.searchFunction(soulOption, term) ?
+          soulOption.removeAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE) :
+          soulOption.setAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE, 'true');
+      }
+      else {
+        allMatchPromises.push(soulOption.match(this.inputElement.value).then(matches => {
+          matches ? soulOption.removeAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE) : soulOption.setAttribute(SelectHelper.SelectHelper.FILTER_ATTRIBUTE, 'true');
+        }));
+      }
+    }
+    await Promise.all(allMatchPromises);
+  }
+  async onKeyDown(event) {
+    switch (event.key) {
+      case Keymap.Keymap.SPACE: {
+        this.onSpaceKeyDown(event);
+        break;
+      }
+      case Keymap.Keymap.DOWN: {
+        this.openOrElse(() => this.highlightNextOption());
+        event.preventDefault();
+        break;
+      }
+      case Keymap.Keymap.UP: {
+        this.openOrElse(() => this.highlightPreviousOption());
+        event.preventDefault();
+        break;
+      }
+      case Keymap.Keymap.ENTER: {
+        this.openOrElse(async () => await this.selectHighlightedOption());
+        break;
+      }
+      case Keymap.Keymap.ESC: {
+        if (this.isPopoverVisible) {
+          this.togglePopover();
+          await this.resetSearch();
+        }
+        break;
+      }
+    }
+  }
+  async selectOption(option) {
+    await this.resetSearch();
+    this.togglePopover();
+    if (!option.dataSelected) {
+      option.dataSelected = true;
+      await this.doOnSelectChange(option, option.dataSelected, true);
+    }
+  }
+  async resetSearch() {
+    if (this.searchable) {
+      this.inputElement.value = '';
+      await this.setFilterDataAttributes('');
+      this.showEmptyOptionMessage = false;
+      const matchingOptions = this.getMatchingOptions();
+      this.soulSearch.emit({ searchTerm: '', matches: matchingOptions.length, matchingOptions: matchingOptions });
+    }
+  }
+  areAllOptionsDeselected() {
+    return this.getOptions().every(option => !option.dataSelected);
+  }
+  resetHighlight() {
+    this.getOptions().forEach(optionElement => optionElement.highlighted = false);
+  }
+  async updateSelectedOptionClone(option) {
+    var _a;
+    const selectedOptionClone = await option.clone();
+    selectedOptionClone.passive = true;
+    selectedOptionClone.selected = false;
+    selectedOptionClone.disabled = this.disabled;
+    this.emptyElement(this.selectionElement);
+    (_a = this.selectionElement) === null || _a === void 0 ? void 0 : _a.appendChild(selectedOptionClone);
+  }
+  emptyElement(element) {
+    while (element === null || element === void 0 ? void 0 : element.firstChild) {
+      element.removeChild(element.firstChild);
+    }
+  }
+  deselectOtherOptions(exclude) {
+    this.getOptions().forEach(option => {
+      if (option.instanceId !== exclude.instanceId) {
+        option.dataSelected = false;
+      }
+    });
+  }
+  openOrElse(elseFunction) {
+    if (!this.isPopoverVisible) {
+      this.togglePopover();
+    }
+    else {
+      elseFunction();
+    }
+  }
+  togglePopover() {
+    if (this.isPopoverVisible) {
+      this.optionListElement.hidePopover();
+    }
+    else {
+      this.setHighlightedOptionIndex();
+      this.optionListElement.showPopover();
+      this.isPopoverVisible = true;
+      this.popoverHelper.connect(this.inputElement, this.optionListElement, this.maxHeight);
+      this.scrollToHighlightedOption();
+    }
+  }
+  async setPlaceholderElementHeight() {
+    const firstOption = this.getOptions()[0];
+    if (firstOption) {
+      const clonedOption = await firstOption.clone();
+      this.optionCloneElement.replaceChildren(clonedOption);
+      this.placeholderElement.style.height = `${this.optionCloneElement.getBoundingClientRect().height}px`;
+    }
+  }
+  onSpaceKeyDown(event) {
+    if (!this.isPopoverVisible) {
+      this.togglePopover();
+    }
+    if (this.disableSpaces) {
+      event.preventDefault();
+    }
+  }
+  setHighlightedOptionIndex() {
+    this.highlightedIndex = this.getOptions().findIndex(option => option.dataSelected);
+  }
+  removeCurrentOptionHighlight() {
+    const assignedElements = this.getOptions();
+    if (utils.isDefined(assignedElements[this.highlightedIndex])) {
+      assignedElements[this.highlightedIndex].highlighted = false;
+    }
+  }
+  isLastOptionHighlighted() {
+    return this.highlightedIndex + 1 === this.getOptions().length;
+  }
+  isFirstOptionHighlighted() {
+    return this.highlightedIndex === 0;
+  }
+  highlightOptionByIndex(index) {
+    this.highlightedIndex = index;
+    const assignedElements = this.getOptions();
+    assignedElements[index].highlighted = true;
+  }
+  highlightPreviousOption() {
+    if (!this.isFirstOptionHighlighted()) {
+      const previousIndex = this.getPreviousIndex(this.highlightedIndex);
+      if (previousIndex != this.highlightedIndex) {
+        this.removeCurrentOptionHighlight();
+        this.highlightOptionByIndex(previousIndex);
+        this.scrollUpToOption();
+      }
+    }
+  }
+  highlightNextOption() {
+    if (!this.isLastOptionHighlighted()) {
+      const nextIndex = this.getNextIndex(this.highlightedIndex);
+      if (nextIndex != this.highlightedIndex) {
+        this.removeCurrentOptionHighlight();
+        this.highlightOptionByIndex(nextIndex);
+        this.scrollDownToOption();
+      }
+    }
+  }
+  scrollUpToOption() {
+    const highlightedOption = this.getOptions()[this.highlightedIndex];
+    if (!this.isHighlightedOptionVisible(highlightedOption)) {
+      highlightedOption.scrollIntoView();
+    }
+  }
+  scrollDownToOption() {
+    const highlightedOption = this.getOptions()[this.highlightedIndex];
+    if (!this.isHighlightedOptionVisible(highlightedOption)) {
+      const optionsListHeight = this.optionListElement.offsetHeight;
+      const optionHeight = highlightedOption.offsetHeight;
+      const scrollOffset = this.optionListElement.scrollTop;
+      const topOffset = (this.highlightedIndex * optionHeight) + optionHeight - scrollOffset - optionsListHeight;
+      this.optionListElement.scrollTo({ top: topOffset + scrollOffset });
+    }
+  }
+  isHighlightedOptionVisible(option) {
+    const optionsListHeight = this.optionListElement.offsetHeight;
+    const optionHeight = option.offsetHeight;
+    const scrollOffset = this.optionListElement.scrollTop;
+    return (this.highlightedIndex * optionHeight) >= scrollOffset && (this.highlightedIndex * optionHeight) + optionHeight <= scrollOffset + optionsListHeight;
+  }
+  getOptions() {
+    return this.optionsElement.assignedElements().reduce((previousValue, element) => {
+      if (element.tagName === 'SOUL-OPTION-GROUP') {
+        const elementOptions = Array.from(element.children);
+        previousValue.push(...elementOptions);
+      }
+      else {
+        previousValue.push(element);
+      }
+      return previousValue;
+    }, []);
+  }
+  async selectHighlightedOption() {
+    const assignedElements = this.getOptions();
+    const optionToSelect = assignedElements[this.highlightedIndex];
+    if (this.isOptionUsable(optionToSelect)) {
+      await this.selectOption(optionToSelect);
+    }
+  }
+  scrollToHighlightedOption() {
+    setTimeout(() => {
+      const selectedOption = this.getOptions()[this.highlightedIndex];
+      if (selectedOption && !this.isHighlightedOptionVisible(selectedOption)) {
+        selectedOption.scrollIntoView();
+      }
+    }, 0);
+  }
+  getPreviousIndex(index) {
+    const previousIndex = index - 1;
+    if (previousIndex >= 0) {
+      const previousIndexOption = this.getOptions()[previousIndex];
+      return this.isOptionUsable(previousIndexOption) ? previousIndex : this.getPreviousIndex(previousIndex);
+    }
+    return this.highlightedIndex;
+  }
+  getNextIndex(index) {
+    const nextIndex = index + 1;
+    if (nextIndex < this.getOptions().length) {
+      const nextIndexOption = this.getOptions()[nextIndex];
+      return this.isOptionUsable(nextIndexOption) ? nextIndex : this.getNextIndex(nextIndex);
+    }
+    return this.highlightedIndex;
+  }
+  setActionSlotVisibility() {
+    if (!this.inputOnly && this.actionElement.assignedElements().length > 0) {
+      this.selectElement.style.setProperty('--_soul-select-action-display', 'block');
+    }
+    else {
+      this.selectElement.style.setProperty('--_soul-select-action-display', 'none');
+    }
+  }
+  resizePlaceholderElement(entries) {
+    this.placeholderElement.style.height = `${entries[0].contentRect.height}px`;
+  }
+  isOptionDisabled(option) {
+    return option.disabled || option.hasAttribute(SelectHelper.SelectHelper.GROUP_DISABLED_ATTRIBUTE);
+  }
+  isOptionHidden(option) {
+    return option.hidden || option.hasAttribute(SelectHelper.SelectHelper.GROUP_HIDDEN_ATTRIBUTE);
+  }
+  isOptionUsable(option) {
+    return !(utils.isUndefined(option) || this.isOptionDisabled(option) || this.isOptionHidden(option) || this.isOptionFiltered(option));
+  }
+  setTooltipTriggerElement() {
+    if (utils.isDefined(this.tooltipElement)) {
+      this.tooltipElement.triggerElement = this.inputElement;
+    }
+  }
+  get host() { return index.getElement(this); }
+  static get watchers() { return {
+    "disabled": ["onDisabledChange"]
+  }; }
+};
+let selectId = 0;
+SoulSelect.style = soulSelectCss;
+
+exports.soul_select = SoulSelect;
+
+//# sourceMappingURL=soul-select.cjs.entry.js.map
