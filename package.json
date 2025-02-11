@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^16.0.1",
     "@esteco/soul-core": "^45.1.2",
     "@esteco/soul-web-components": "^45.1.2",
     "autoprefixer": "^10.4.20",
     "contentful": "^11.4.5",
     "fs": "^0.0.1-security",
+    "markdown-to-jsx": "^7.7.3",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
