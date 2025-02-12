@@ -3,7 +3,7 @@ import { getPageFromSlug } from "@/utils/content";
 import { notFound } from "next/navigation";
 import { HeroSection } from "@/components/HeroSection";
 const componentMap = {
-  heroSection: HeroSection,
+  umHeroSectionWithGif: HeroSection,
 };
 
 export default async function ComposablePage() {
@@ -12,12 +12,7 @@ export default async function ComposablePage() {
     if (!page) {
       return notFound();
     }
-    // console.log("PAGE");
-    // console.log(page);
-    // console.log("SECTIONS");
-    // console.log(page.sections);
-    // console.log("TYPE");
-    // console.log(page.sections[0].type);
+    
     return (
       <>
         <div data-sb-object-id={page.id}>
@@ -38,7 +33,7 @@ export default async function ComposablePage() {
     if (error instanceof Error) {
       console.error(error.message);
     } else {
-      console.error("An unknown error occurred");
+      console.error("An unknown error occurred - primary page");
     }
     return notFound();
   }

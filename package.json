@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^17.0.0",
     "@contentful/rich-text-react-renderer": "^16.0.1",
+    "@contentful/rich-text-types": "^17.0.0",
     "@esteco/soul-core": "^45.1.2",
     "@esteco/soul-web-components": "^45.1.2",
     "autoprefixer": "^10.4.20",

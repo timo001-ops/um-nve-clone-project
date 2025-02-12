@@ -42,3 +42,4 @@ next-env.d.ts
 
 # trash folder
 /do-not-commit
+/contentful

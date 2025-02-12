@@ -45,6 +45,7 @@ export async function getPageFromSlug(slug: any) {
     const { items } = await getEntries(PAGE_CONTENT_TYPE_ID, {
       "fields.slug": slug.slice(1),
     });
+
     page = (items ?? [])[0];
   }
   if (!page) throw new Error(`Page not found for slug: ${slug}`);
@@ -54,7 +55,6 @@ export async function getPageFromSlug(slug: any) {
 function mapEntry(entry: any): any {
   const id = entry.sys?.id;
   const type = entry.sys?.contentType?.sys?.id || entry.sys?.type;
-
   if (entry.sys?.type === "Asset") {
     return {
       id,
